@@ -58,6 +58,23 @@ A principal diferença entre [Git](https://git-scm.com/) e qualquer outro **VCS 
     description: descrição do projeto
     hooks: gatilhos para ações durante o projeto
 
+Como utilizar o editor vi
+
+    $ vi nome_arquivo.txt <ENTER>
+    apertar letra "i" -> entra no modo de inserção
+    escrever o texto desejado
+    apertar tecla ESC
+    apertar :wq <ENTER>
+
+    Explicação :wq
+    : -> vai iniciar algum comando
+    w -> escrever
+    q -> sair
+
+[Editor VI - Guia de Referência](https://aurelio.net/curso/material/vim-ref.html)
+
+
+
 
 
     
