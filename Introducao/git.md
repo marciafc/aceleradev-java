@@ -351,6 +351,8 @@ Há três tipos de reset:
     # Mais informações sobre o repositório remoto
     $ git remote -v
 
+[Adicionar um projeto existente ao GitHub usando a linha de comando](https://help.github.com/pt/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
+
 ## Alterar o remote do URL
 
 É possível alterar o remote de HTTPS para SSH ou vice-versa
@@ -358,4 +360,33 @@ Há três tipos de reset:
 [Alternar URLs remotes de SSH para HTTPS](https://help.github.com/pt/github/using-git/changing-a-remotes-url#switching-remote-urls-from-ssh-to-https)
 
 [Alternar URLs remotes de HTTPS para SSH](https://help.github.com/pt/github/using-git/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
+
+## Enviando alterações para o repositório remoto
+
+Após realizar as alterações, digitar os comandos
+
+    # Adiciona e commita
+    $ git commit -am "Alteração em xyz" 
+
+    # Envia para o repositório remoto (chamado 'origin' - nome default) a partir do branch master
+    $ git push origin master
+
+## Clonando repositórios remotos
+
+"As URLs de clone de https:// estão disponíveis em todos os repositórios, públicos e privados. Esses URLs funcionam mesmo se você estiver protegido por um firewall ou proxy."
+
+###### Fonte: [Qual URL remote eu devo usar?](https://help.github.com/pt/github/using-git/which-remote-url-should-i-use)
+
+    # É possível clonar pelo endereço https ou ssh    
+    $ git clone url-repositorio-remoto.git
+
+    # O parâmetro 'nome-da-pasta' é opcional e caso não informe, será baixado com o mesmo
+    # nome que está no repositório remoto
+    $ git clone url-repositorio-remoto.git nome-da-pasta
+
+## Fazendo fork de um projeto
+
+Faz cópia do projeto de outro usuário para o seu.
+
+Acesse no Github, o projeto que deseja fazer o fork e clique em "Fork".
 
