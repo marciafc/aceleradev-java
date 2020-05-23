@@ -296,11 +296,14 @@ Há três tipos de reset:
 [Conectar-se ao GitHub com SSH](https://help.github.com/pt/github/authenticating-to-github/connecting-to-github-with-ssh)
 
 [Gerar uma nova chave SSH](https://help.github.com/pt/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+[Adicionar sua chave SSH ao ssh-agent](https://help.github.com/pt/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
     
     # Onde ficam as chaves do ssh
     $ cd ~/.ssh    
 
     # Gerar chave
+    # Só ir dando <enter> para aceitar as opções default
     $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
     # Listando as chaves
@@ -308,7 +311,14 @@ Há três tipos de reset:
 
     # A saída será:
     id_rsa  id_rsa.pub
+    
+    # Inicie o ssh-agent em segundo plano
+    $ eval "$(ssh-agent -s)"
 
+    # Adicione sua chave SSH privada ao ssh-agent
+    $ ssh-add ~/.ssh/id_rsa
+
+    # Adicionar a chave no Github
     # A chave que vai no Github é a .pub
 
     # Obter a chave
@@ -319,4 +329,24 @@ Há três tipos de reset:
 
     # Ou pode abrir no editor de texto
     $ vi id_rsa.pub
+
+    # Copiar a chave para a área de transferência, logar no Github e acessar:
+    # Settings \ SSH and GPC Keys \ New SSH key
+        Title: Pode ser o identiticador da máquina (Home/Work/etc...)
+        Key: Colar a chave gerada
+
+## Ligando repositório local a um remoto
     
+    Após criar o repositório no Github, realizar os seguintes passos:
+
+    Para ssh, executar os comandos em formato ssh. Logo abaixo onde diz "Quick setup — if you’ve done this kind of thing before", selecione "SSH". Então, execute um dos passos abaixo.
+
+    - …or create a new repository on the command line: se não tem o repositório local
+
+    - …or push an existing repository from the command line: se já criou 
+
+    # Mostra o repositório remoto
+    $ git remote
+
+    # Mais informações sobre o repositório remoto
+    $ git remote -v
