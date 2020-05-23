@@ -182,6 +182,8 @@ Os arquivos no Git sempre se encontram em algum estado: untracked, unmodified, m
     # Não há mais alteração
     git status
 
+[Descartando mudanças locais (antes do stage)](https://githowto.com/pt-BR/undoing_local_changes)
+
 ## Desfazendo coisas que JÁ foram adicionadas
 
     # Editar o arquivo
@@ -204,6 +206,8 @@ Os arquivos no Git sempre se encontram em algum estado: untracked, unmodified, m
 
     # Desfaz a alteração do arquivo
     git checkout readme.md
+
+[Descartando mudanças no stage (antes do commit)](https://githowto.com/pt-BR/undoing_staged_changes)    
 
 ## Desfazendo alterações que já foram adicionadas E commitadas
 
