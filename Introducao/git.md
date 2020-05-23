@@ -350,3 +350,12 @@ Há três tipos de reset:
 
     # Mais informações sobre o repositório remoto
     $ git remote -v
+
+## Alterar o remote do URL
+
+É possível alterar o remote de HTTPS para SSH ou vice-versa
+
+[Alternar URLs remotes de SSH para HTTPS](https://help.github.com/pt/github/using-git/changing-a-remotes-url#switching-remote-urls-from-ssh-to-https)
+
+[Alternar URLs remotes de HTTPS para SSH](https://help.github.com/pt/github/using-git/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
+
