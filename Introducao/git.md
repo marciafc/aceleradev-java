@@ -221,6 +221,10 @@ Há três tipos de reset:
 
 [[Git] Os Três Tipos de Reset](https://medium.com/@andgomes/os-tr%C3%AAs-tipos-de-reset-aa220658d9b2)
 
+[Desfazendo commits](https://githowto.com/pt-BR/undoing_committed_changes)
+
+[Removendo um commit de um branch](https://githowto.com/pt-BR/removing_commits_from_a_branch)
+
 ## Desfazendo alterações que JÁ foram adicionadas E commitadas (SOFT)
 
     # Editar o arquivo
@@ -286,4 +290,33 @@ Há três tipos de reset:
 
     # Utilizar com muito cuidado se já tiver subido no repositório remoto (necessário usar FORCE)
     # Irá alterar o histórico de commits
+    
+## Criando e adicionando uma chave SSH
+
+[Conectar-se ao GitHub com SSH](https://help.github.com/pt/github/authenticating-to-github/connecting-to-github-with-ssh)
+
+[Gerar uma nova chave SSH](https://help.github.com/pt/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+    
+    # Onde ficam as chaves do ssh
+    $ cd ~/.ssh    
+
+    # Gerar chave
+    $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+    # Listando as chaves
+    $ ls
+
+    # A saída será:
+    id_rsa  id_rsa.pub
+
+    # A chave que vai no Github é a .pub
+
+    # Obter a chave
+    $ cat id_rsa.pub
+
+    # Também obtém a chave
+    $ more id_rsa.pub
+
+    # Ou pode abrir no editor de texto
+    $ vi id_rsa.pub
     
