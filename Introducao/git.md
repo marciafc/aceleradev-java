@@ -215,7 +215,7 @@ Há três tipos de reset:
 
  - soft: vai matar o commit feito, o arquivo já está em staging com a modificação pronta para ser commitada
 
- - mixex: mata o commit também, vai voltar arquivos para antes do staging (modified)
+ - mixed: mata o commit também, vai voltar arquivos para antes do staging (modified)
 
  - hard: ignorar commit e tudo o que foi feito, reset bem bruto
 
@@ -389,4 +389,69 @@ Após realizar as alterações, digitar os comandos
 Faz cópia do projeto de outro usuário para o seu.
 
 Acesse no Github, o projeto que deseja fazer o fork e clique em "Fork".
+
+## Branch
+
+É um ponteiro móvel que leva a um commit.
+
+    # Criando branch
+    $ git checkout -b <nome-do-branch-quero-criar>
+    $ git checkout -b testing
+
+    # Informa quais são os branches existentes e qual branch está no momento (em *)
+    $ git branch
+
+## Movendo e deletando branches
+
+    # Ir para um branch específico
+    $ git checkout <nome-do-branch-quero-ir>
+    $ git checkout master
+
+    # Remover um branch (para remover, tem que fazer checkout para outro branch antes)
+    $ git branch -D <nome-do-branch-quero-remover>
+    $ git branch -D testing
+
+## Entendendo o merge
+
+No **merge** é gerado um commit extra para unir os commits que "andaram" em separado (em outro branch) com o branch que será unificado (por exemplo, a develop). 
+
+Isso acaba criando uma forma de diamante que pode confundir bastante quando vamos olhar os commits.
+
+Pró: É uma operação não destrutiva (irá manter o histórico).
+
+Contra: Commit extra, histórico poluído
+
+Exemplo: estou trabalhando no branch **'my-branch'** e quero fazer **merge** com o branch **'develop'** (onde os demais desenvolvedores estão trabalhando):
+    
+    # Trocar para o branch da develop
+    $ git checkout develop
+
+    # Atualizar o branch da develop
+    $ git pull
+
+    # Voltar para o meu branch ('my-branch')
+    $ git checkout my-branch
+
+    # Fazer o merge com a develop
+    git merge develop
+
+## Entendendo o rebase
+
+Deixa os commits de forma linear.
+
+Fast-foward: põem as mudanças para o início da fila.
+
+Pro: evita commit extra, histórico linear
+
+Contra: perde ordem cronológica (como coloca o commit para o início da fila, perde a ordem que ocorreu), **muda o histórico**
+
+Deve tomar basta **cuidado com essa mudança de histórico**. Ao mudar o histórico e se outra pessoa estiver trabalhando no mesmo branch, essa pessoa não vai conseguir subir as alterações que fez, vai dar conflito, pois o histórico está diferente.
+
+Rebase deve ser usado com muito cuidado!
+
+Usar rebase qdo for fazer pull das modificações, assim não tem o rsico de fazer mudança no histórico que outras pessoas
+poderiam estar trabalhando e seriam prejudicadas.
+
+    # Rebase qdo for fazer pull
+    $ git pull --rebase
 
