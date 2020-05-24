@@ -28,7 +28,7 @@ A principal diferença entre [Git](https://git-scm.com/) e qualquer outro **VCS 
     git config --global user.email "email@..."
 
     # Definir o editor padrão do Git (no exemplo, para o Visual Studio Code)
-    git config --global core.editor vscode
+    git config --global core.editor "code --wait"
 
     # Saber o valor configurado
     git config chave
@@ -435,13 +435,151 @@ Exemplo: estou trabalhando no branch **'my-branch'** e quero fazer **merge** com
     # Fazer o merge com a develop
     git merge develop
 
+### Exemplo com Merge:
+
+    # Criar pasta
+    $ mkdir rebase-merge
+
+    # Acessar pasta
+    $ cd rebase-merge
+
+    # Inicializar repositório Git
+    $ git init
+
+    # Criar arquivo foo
+    $ vi foo
+
+    # Adicionar arq foo
+    $ git add foo
+
+    # Commit arq foo
+    $ git commit -m "Add foo (master)"
+
+    # Tudo isso ocorreu no branch 'master'
+    # Agora vamos criar um outro branch e vamos chamar de 'test'
+    $ git checkout -b test
+
+    # Criar arquivo chamado bar
+    $ vi bar
+
+    # Adicionar arq bar
+    $ git add bar
+
+    # Commit arq bar
+    $ git commit -m "Add bar (test)"
+
+    # Ver commits do branch 'test' 
+        # Add bar -> veio deste branch
+        # Add foo -> veio do master
+    $ git log
+
+    # Retornar para a master
+    $ git checkout master
+
+    # Ver commits do branch 'master'
+        Add foo -> veio do próprio master, não tem o 'Add bar' (pois ele ocorreu no branch 'test')
+    $ git log
+
+    # Criar arquivo chamado fizz
+    $ vi fizz
+
+    # Adicionar arq fizz
+    $ git add fizz
+
+    # Commit arq fizz
+    $ git commit -m "Add fizz (master)"
+
+    # Ver commits do branch 'master'
+        # Add fizz							-> Não tem o 'Add bar'	(pois ele ocorreu no branch 'test')
+        ###################################	'Add bar' teria que entrar aqui pela ordem cronológica
+        # Add foo
+    $ git log
+
+    # Fazer o merge (vai pegar do branch 'test' e colocar no 'master')
+    $ git merge test
+
+    # Apertar <ESC>  (se estiver usando vi)
+
+    # Digitar :wq para salvar e sair (se estiver usando vi)
+
+    # O merge foi realizado do 'test' para dentro do 'master'
+
+    # Ver commits do branch 'master'
+        # Merge branch 'test'	-> Ocorreu um commit novo para fazer essa junção
+        # Add fizz
+        # Add bar				-> Entrou na posição esperada
+        # Add foo
+    $ git log
+
+    # Olhar o log graficamente (repare o ciclo)
+    # O histórico fica linear (git log), a estrutura não fica linear (git log --graph)
+    $ git log --graph    
+
+#### Olhando o git log
+
+<pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log
+<font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
+Merge: 4e6d28b d954957
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:26:45 2020 -0300
+
+    Merge branch &apos;test&apos;
+
+<font color="#C4A000">commit 4e6d28bbfaf35fab33056f85036e3bb9cba4f41e</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:26:19 2020 -0300
+
+    Add fizz (master)
+
+<font color="#C4A000">commit d9549572c90ba6b4e4b5a395e6c8584cfd43002b (</font><font color="#8AE234"><b>test</b></font><font color="#C4A000">)</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:25:22 2020 -0300
+
+    Add bar (test)
+
+<font color="#C4A000">commit 12348eb2fdadd15b5f168f96002deff573feb160</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:24:52 2020 -0300
+
+    Add foo (master)
+</pre>
+
+#### Olhando o git log --graph
+
+<pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log --graph
+*   <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
+<font color="#CC0000">|</font><font color="#4E9A06">\</font>  Merge: 4e6d28b d954957
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> Date:   Sat May 23 22:26:45 2020 -0300
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> 
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font>     Merge branch &apos;test&apos;
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> 
+<font color="#CC0000">|</font> * <font color="#C4A000">commit d9549572c90ba6b4e4b5a395e6c8584cfd43002b (</font><font color="#8AE234"><b>test</b></font><font color="#C4A000">)</font>
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> Date:   Sat May 23 22:25:22 2020 -0300
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> 
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font>     Add bar (test)
+<font color="#CC0000">|</font> <font color="#4E9A06">|</font> 
+* <font color="#4E9A06">|</font> <font color="#C4A000">commit 4e6d28bbfaf35fab33056f85036e3bb9cba4f41e</font>
+<font color="#4E9A06">|/</font>  Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#4E9A06">|</font>   Date:   Sat May 23 22:26:19 2020 -0300
+<font color="#4E9A06">|</font>   
+<font color="#4E9A06">|</font>       Add fizz (master)
+<font color="#4E9A06">|</font> 
+* <font color="#C4A000">commit 12348eb2fdadd15b5f168f96002deff573feb160</font>
+  Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+  Date:   Sat May 23 22:24:52 2020 -0300
+  
+      Add foo (master)
+</pre>  
+
 ## Entendendo o rebase
 
 Deixa os commits de forma linear.
 
 Fast-foward: põem as mudanças para o início da fila.
 
-Pro: evita commit extra, histórico linear
+Pro: evita commit extra, histórico linear (sem o formato de diamante)
 
 Contra: perde ordem cronológica (como coloca o commit para o início da fila, perde a ordem que ocorreu), **muda o histórico**
 
@@ -449,9 +587,16 @@ Deve tomar basta **cuidado com essa mudança de histórico**. Ao mudar o histór
 
 Rebase deve ser usado com muito cuidado!
 
-Usar rebase qdo for fazer pull das modificações, assim não tem o rsico de fazer mudança no histórico que outras pessoas
+Usar rebase qdo for fazer pull das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas
 poderiam estar trabalhando e seriam prejudicadas.
 
     # Rebase qdo for fazer pull
     $ git pull --rebase
+
+### Exemplo com Rebase (executar após o [Exemplo com Merge](#Exemplo-com-merge))
+    
+    # 
+
+  
+
 
