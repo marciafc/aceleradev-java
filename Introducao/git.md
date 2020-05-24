@@ -825,3 +825,77 @@ Referências sobre Merge e Rebase:
     - [Gráfico](https://github.com/arruda/exemplo_diamante_git/network) 
 
     - [Histórico](https://github.com/arruda/exemplo_diamante_git/commits/master)     
+
+## Criando o .gitignore
+
+Documentação oficial: [gitignore](https://git-scm.com/docs/gitignore)
+
+Não "trackeia" alguns arquivos.
+
+Especificar tudo que tenha extensão json**
+
+    *.json
+
+Especificar um arquivo específico (escrever nome completo do arquivo)
+
+    db.xls
+
+[Diversos templates de .gitignore](https://github.com/github/gitignore)
+
+[Site para gerar .gitignore](http://gitignore.io/)
+
+## Git stash
+
+Documentação oficial: [Git Tools - Stashing and Cleaning](https://git-scm.com/book/pt-br/v2/Git-Tools-Stashing-and-Cleaning)
+
+Guarda modificações que ainda não foram commitadas. Pode chamar depois quando for necessário.
+
+    # Editar readme
+    $ vi readme.md
+
+    # Arquivo 'readme' está modified
+    $ git status
+
+    # Preciso trocar de branch e não quero subir ainda a modificação (ainda não foi finalizada)
+    $ git stash
+
+    # Não há modificação (a alteração fica salva em um "local temporário")
+    $ git status
+
+    # Pode criar novo branch
+    $ git checkout -b bla
+
+    # Log ainda não tem nada
+    $ git log
+
+    # Recuperar o que ficou no stash
+    $ git stash apply
+
+    # Mostra as mudanças que tinha feito
+    $ git diff
+
+    # Mostra a lista de stashes
+    $ git stash list
+
+    # Limpa tudo que estiver no stash
+    $ git stash clear
+
+## Alias
+
+Atalhos dos comandos do Git
+
+    # Desta forma, ao invés de digitar 'git status', basta digitar 'git s'
+    $ git config --global alias.s status
+
+    # Desta forma, ao invés de digitar 'git branch', basta digitar 'git b'
+    $ git config --global alias.b branch
+
+    # Formato para criar atalho
+    $ git config --global alias.<nome-que-sera-o-atalho> <comando-git>
+
+## Versionando com tags    
+
+É um delimitador maior (por exemplos vários commits agrupados).
+
+    # Criando a tag
+    $ git tag -a 1.0.0 -m "Readme finalizado"
