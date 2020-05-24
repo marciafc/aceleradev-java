@@ -512,14 +512,14 @@ Exemplo: estou trabalhando no branch **'my-branch'** e quero fazer **merge** com
     $ git log
 
     # Olhar o log graficamente (repare o ciclo)
-    # O histórico fica linear (git log), a estrutura não fica linear (git log --graph)
+    # O histórico está ordenado (git log), a estrutura não fica linear (git log --graph)
     $ git log --graph    
 
 #### Olhando o git log
 
 (se abrir este arquivo .md no preview do editor VSCode aparece colorido)
 
-<pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log
+<pre>$ git log
 <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
 Merge: 4e6d28b d954957
 Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
@@ -550,7 +550,7 @@ Date:   Sat May 23 22:24:52 2020 -0300
 
 (se abrir este arquivo .md no preview do editor VSCode aparece colorido)
 
-<pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log --graph
+<pre>$ git log --graph
 *   <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
 <font color="#CC0000">|</font><font color="#4E9A06">\</font>  Merge: 4e6d28b d954957
 <font color="#CC0000">|</font> <font color="#4E9A06">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
@@ -583,6 +583,12 @@ Deixa os commits de forma linear.
 
 Fast-foward: põem as mudanças para o início da fila.
 
+[Lidar com erros non-fast-forward](https://help.github.com/pt/github/using-git/dealing-with-non-fast-forward-errors)
+
+[Erro ao tentar dar push - non-fast-forward](https://cursos.alura.com.br/forum/topico-nao-consigo-dar-um-push-no-meu-projeto-git-45617)
+
+[The “fatal: refusing to merge unrelated histories” Git error](https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error)
+
 Pro: evita commit extra, histórico linear (sem o formato de diamante)
 
 Contra: perde ordem cronológica (como coloca o commit para o início da fila, perde a ordem que ocorreu), **muda o histórico**
@@ -591,10 +597,17 @@ Deve tomar basta **cuidado com essa mudança de histórico**. Ao mudar o histór
 
 Rebase deve ser usado com muito cuidado!
 
-[Boa prática] Usar rebase qdo for fazer pull das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas poderiam estar trabalhando e seriam prejudicadas.
+[Boa prática] **Usar rebase qdo for fazer pull** das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas poderiam estar trabalhando e seriam prejudicadas.
 
     # Rebase qdo for fazer pull
     $ git pull --rebase
+
+Lembrando: "o **Rebase** altera a árvore de commits, assim se for feito um push dessa alteração, ás árvores dos outros desenvolvedores vão também ser reescritas e isso pode gerar uma baita confusão! Portanto não é uma boa ideia fazer 'pushar' o Rebase, a menos que queira apanhar do seu time!" (Fonte: [Diferença entre Rebase e Merge](http://arruda.blog.br/programacao/dicas-de-git-rebase-vs-merge.html))
+    
+    # Configuração para utilizar o rebase quando fizer o pull de algum remote
+    # Para fazer isso localmente em um único repositório no lugar de global, basta retirar o '--global'
+    # No caso do Branch master:
+    $ git config --global branch.master.rebase true 
 
 ### Exemplo com Rebase (executar após o [Exemplo com Merge](#Exemplo-com-merge))
     # Isso será executado no branch 'master'
@@ -793,10 +806,14 @@ Date:   Sat May 23 22:24:52 2020 -0300
 
     Rebase: utilizar enquanto estiver trabalhando, adicionando novos commits e sempre atualizando com outros branches.
 
-    
+Referências sobre Merge e Rebase:
 
-    
+- 🔝 [Git Merge e Git Rebase: quando usá-los?](https://www.treinaweb.com.br/blog/git-merge-e-git-rebase-quando-usa-los/)
 
-  
+- [Documentação OFICIAL: Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+ 
+- Repositório Github que ilustra Merge X Rebase: O segundo e o terceiro commit estão usando merge, e os dois últimos usando rebase, você pode ver como fica mais claro a visualização usando rebase do que usando merge, que cria essas ramificações e depois volta para a linha principal dos commits. (Fonte: [Dicas de GIT: Rebase vs Merge](http://arruda.blog.br/programacao/dicas-de-git-rebase-vs-merge.html))
 
+    - [Gráfico](https://github.com/arruda/exemplo_diamante_git/network) 
 
+    - [Histórico](https://github.com/arruda/exemplo_diamante_git/commits/master)     
