@@ -597,17 +597,25 @@ Deve tomar basta **cuidado com essa mudança de histórico**. Ao mudar o histór
 
 Rebase deve ser usado com muito cuidado!
 
-[Boa prática] **Usar rebase qdo for fazer pull** das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas poderiam estar trabalhando e seriam prejudicadas.
+"o **Rebase** altera a árvore de commits, assim se for feito um push dessa alteração, ás árvores dos outros desenvolvedores vão também ser reescritas e isso pode gerar uma baita confusão! Portanto não é uma boa ideia fazer 'pushar' o Rebase, a menos que queira apanhar do seu time!" (Fonte: [Diferença entre Rebase e Merge](http://arruda.blog.br/programacao/dicas-de-git-rebase-vs-merge.html))
+
+[Boa prática] **Usar rebase qdo for fazer pull** das modificações.
 
     # Rebase qdo for fazer pull
     $ git pull --rebase
-
-Lembrando: "o **Rebase** altera a árvore de commits, assim se for feito um push dessa alteração, ás árvores dos outros desenvolvedores vão também ser reescritas e isso pode gerar uma baita confusão! Portanto não é uma boa ideia fazer 'pushar' o Rebase, a menos que queira apanhar do seu time!" (Fonte: [Diferença entre Rebase e Merge](http://arruda.blog.br/programacao/dicas-de-git-rebase-vs-merge.html))
     
-    # Configuração para utilizar o rebase quando fizer o pull de algum remote
+If you are using git pull and want to make --rebase the default, you can set the pull.rebase config value with something like (Fonte: [Git Branching - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)):
+
+    $ git config --global pull.rebase true
+ 
+Configuração para utilizar o rebase quando fizer o pull de algum remote:
+
     # Para fazer isso localmente em um único repositório no lugar de global, basta retirar o '--global'
+    
     # No caso do Branch master:
-    $ git config --global branch.master.rebase true 
+    $ git config --global branch.master.rebase true
+    
+[How to make Git pull use rebase by default for all my repositories?](https://stackoverflow.com/questions/13846300/how-to-make-git-pull-use-rebase-by-default-for-all-my-repositories)    
 
 ### Exemplo com Rebase (executar após o [Exemplo com Merge](#Exemplo-com-merge))
     # Isso será executado no branch 'master'
