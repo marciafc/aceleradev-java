@@ -517,6 +517,8 @@ Exemplo: estou trabalhando no branch **'my-branch'** e quero fazer **merge** com
 
 #### Olhando o git log
 
+(se abrir este arquivo .md no preview do editor VSCode aparece colorido)
+
 <pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log
 <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
 Merge: 4e6d28b d954957
@@ -544,7 +546,9 @@ Date:   Sat May 23 22:24:52 2020 -0300
     Add foo (master)
 </pre>
 
-#### Olhando o git log --graph
+#### Olhando o git log --graph 
+
+(se abrir este arquivo .md no preview do editor VSCode aparece colorido)
 
 <pre>(base) <font color="#8AE234"><b>marcialinux@marcialinux-Lenovo-G400s</b></font>:<font color="#729FCF"><b>~/IdeaProjects/git-curso2/rebase-merge</b></font>$ git log --graph
 *   <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
@@ -587,15 +591,211 @@ Deve tomar basta **cuidado com essa mudança de histórico**. Ao mudar o histór
 
 Rebase deve ser usado com muito cuidado!
 
-Usar rebase qdo for fazer pull das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas
-poderiam estar trabalhando e seriam prejudicadas.
+[Boa prática] Usar rebase qdo for fazer pull das modificações, assim não tem o risco de fazer mudança no histórico que outras pessoas poderiam estar trabalhando e seriam prejudicadas.
 
     # Rebase qdo for fazer pull
     $ git pull --rebase
 
 ### Exemplo com Rebase (executar após o [Exemplo com Merge](#Exemplo-com-merge))
+    # Isso será executado no branch 'master'
+    $ git checkout master
+
+    # Criar o arquivo buzz
+    $ vi buzz
+
+    # Adicionar o arq buzz
+    $ git add buzz
+
+    # Commit arq buzz
+    $ git commit -m "Add buzz (master)"
+
+    # Commits do branch 'master'
+        # Add buzz
+        # Merge branch 'test'
+        # Add fizz
+        # Add bar
+        # Add foo
+    $ git log
+
+    # Criar novo branch
+    $ git checkout -b rebase-branch
+
+    # Criar o arquivo bla
+    $ vi bla
+
+    # Adicionar o arq bla
+    $ git add bla
+
+    # Commit arq bla
+    $ git commit -m "Add bla (rebase-branch)"
+
+    # Commits do branch rebase-branch
+        # Add bla
+        # Add buzz
+        # Merge branch 'test'
+        # Add fizz
+        # Add bar
+        # Add foo
+    $ git log	
+
+    # Segue linear 
+    $ git log --graph
+
+    # Trocar para o branch master
+    $ git checkout master
+
+    # Commits do branch master
+        ##########		-> Não tem o 'Add bla' (foi feito no branch 'rebase-branch')
+        # Add buzz		
+        # Merge branch 'test'
+        # Add fizz
+        # Add bar
+        # Add foo
+    $ git log	
+
+    # Criar o arquivo seila
+    $ vi seila
+
+    # Adicionar o arq seila
+    $ git add seila
+
+    # Commit arq seila
+    $ git commit -m "Add seila (master)"
+
+    # Commits do branch master
+        # Add seila
+        ##########		-> Não tem o 'Add bla' (foi feito no branch 'rebase-branch')
+        # Add buzz		
+        # Merge branch 'test'
+        # Add fizz
+        # Add bar
+        # Add foo
+    $ git log
+
+    # Rebase com branch rebase-branch
+    $ git rebase rebase-branch
+
+    # Commits no branch 'master'
+        # Add seila
+        # Add bla 
+        # Add buzz		
+        # Merge branch 'test'
+        # Add fizz
+        # Add bar
+        # Add foo
+    $ git log
+
+    # Visualizando em modo gráfico (não criou ciclo)
+    $ git log --graph
+
+#### Olhando o git log
+
+(se abrir este arquivo .md no preview do editor VSCode aparece colorido)
+
+<pre>$ git log
+<font color="#C4A000">commit 884d7a0c4bf333ef66ac5c1241761d26064e1a03 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 23:56:30 2020 -0300
+
+    Add seila (master)
+
+<font color="#C4A000">commit f7d3a2b43ea65573887ffe6136c77f98b79dfbe9 (</font><font color="#8AE234"><b>rebase-branch</b></font><font color="#C4A000">)</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 23:49:40 2020 -0300
+
+    Add bla (rebase-branch)
+
+<font color="#C4A000">commit a56a813ac9df4d0efcade6a6086c87fe51528153</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 23:47:38 2020 -0300
+
+    Add buzz (master)
+
+<font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7</font>
+Merge: 4e6d28b d954957
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:26:45 2020 -0300
+
+    Merge branch &apos;test&apos;
+
+<font color="#C4A000">commit 4e6d28bbfaf35fab33056f85036e3bb9cba4f41e</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:26:19 2020 -0300
+
+    Add fizz (master)
+
+<font color="#C4A000">commit d9549572c90ba6b4e4b5a395e6c8584cfd43002b (</font><font color="#8AE234"><b>test</b></font><font color="#C4A000">)</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:25:22 2020 -0300
+
+    Add bar (test)
+
+<font color="#C4A000">commit 12348eb2fdadd15b5f168f96002deff573feb160</font>
+Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+Date:   Sat May 23 22:24:52 2020 -0300
+
+    Add foo (master)
+</pre>
+
+#### Olhando o git log --graph
+
+(se abrir este arquivo .md no preview do editor VSCode aparece colorido)
+
+<pre>$ git log --graph
+* <font color="#C4A000">commit 884d7a0c4bf333ef66ac5c1241761d26064e1a03 (</font><font color="#34E2E2"><b>HEAD -&gt; </b></font><font color="#8AE234"><b>master</b></font><font color="#C4A000">)</font>
+<font color="#CC0000">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#CC0000">|</font> Date:   Sat May 23 23:56:30 2020 -0300
+<font color="#CC0000">|</font> 
+<font color="#CC0000">|</font>     Add seila (master)
+<font color="#CC0000">|</font> 
+* <font color="#C4A000">commit f7d3a2b43ea65573887ffe6136c77f98b79dfbe9 (</font><font color="#8AE234"><b>rebase-branch</b></font><font color="#C4A000">)</font>
+<font color="#CC0000">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#CC0000">|</font> Date:   Sat May 23 23:49:40 2020 -0300
+<font color="#CC0000">|</font> 
+<font color="#CC0000">|</font>     Add bla (rebase-branch)
+<font color="#CC0000">|</font> 
+* <font color="#C4A000">commit a56a813ac9df4d0efcade6a6086c87fe51528153</font>
+<font color="#CC0000">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#CC0000">|</font> Date:   Sat May 23 23:47:38 2020 -0300
+<font color="#CC0000">|</font> 
+<font color="#CC0000">|</font>     Add buzz (master)
+<font color="#CC0000">|</font>   
+*   <font color="#C4A000">commit 852e50e7b5ee9c633d7be48debd9743c6ce3afb7</font>
+<font color="#4E9A06">|</font><font color="#C4A000">\</font>  Merge: 4e6d28b d954957
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> Date:   Sat May 23 22:26:45 2020 -0300
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> 
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font>     Merge branch &apos;test&apos;
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> 
+<font color="#4E9A06">|</font> * <font color="#C4A000">commit d9549572c90ba6b4e4b5a395e6c8584cfd43002b (</font><font color="#8AE234"><b>test</b></font><font color="#C4A000">)</font>
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> Date:   Sat May 23 22:25:22 2020 -0300
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> 
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font>     Add bar (test)
+<font color="#4E9A06">|</font> <font color="#C4A000">|</font> 
+* <font color="#C4A000">|</font> <font color="#C4A000">commit 4e6d28bbfaf35fab33056f85036e3bb9cba4f41e</font>
+<font color="#C4A000">|/</font>  Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+<font color="#C4A000">|</font>   Date:   Sat May 23 22:26:19 2020 -0300
+<font color="#C4A000">|</font>   
+<font color="#C4A000">|</font>       Add fizz (master)
+<font color="#C4A000">|</font> 
+* <font color="#C4A000">commit 12348eb2fdadd15b5f168f96002deff573feb160</font>
+  Author: Marcia Castagna &lt;marciafc.info@gmail.com&gt;
+  Date:   Sat May 23 22:24:52 2020 -0300
+  
+      Add foo (master)
+</pre>
+
+#### Quando utilizar cada MERGE ou REBASE?
+
+    Merge: usar quando for casos de pull request, onde é necessário ver que foi unido por conta de uma feature.
+    Utilizar quando a feature é adicionada no final e quer ver o histórico (de onde veio).
+
+    Rebase: utilizar enquanto estiver trabalhando, adicionando novos commits e sempre atualizando com outros branches.
+
     
-    # 
+
+    
 
   
 
