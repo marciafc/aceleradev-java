@@ -407,7 +407,7 @@ Acesse no Github, o projeto que deseja fazer o fork e clique em "Fork".
     $ git checkout <nome-do-branch-quero-ir>
     $ git checkout master
 
-    # Remover um branch (para remover, tem que fazer checkout para outro branch antes)
+    # Remover um branch LOCAL (para remover, tem que fazer checkout para outro branch antes)
     $ git branch -D <nome-do-branch-quero-remover>
     $ git branch -D testing
 
@@ -897,5 +897,84 @@ Atalhos dos comandos do Git
 
 É um delimitador maior (por exemplos vários commits agrupados).
 
-    # Criando a tag
+Ótimo para quem precisa versionar bibliotecas.
+
+    # Criando a tag (criar a tag sempre depois de ter feito o "PUSH" no repositório remoto)
     $ git tag -a 1.0.0 -m "Readme finalizado"
+
+    # Subindo as tags para o repositório remoto
+    # Quando cria uma tag, no Github vai aparecer em "Release"
+    # Exemplo:  4 commits    2 branches  0 packages  1 release
+    $ git push origin master --tags
+
+    # Listar todas as tags geradas
+    $ git tag
+
+## Git revert
+
+    # Editar o arq readme
+    $ vi readme.md
+
+    # Add e Commit 
+    $ git commit -am "Adicionar nova linha"
+
+    # Listar os commits
+    $ git log
+
+    # Visualizar o commit "Adicionar nova linha"
+    $ git show <hash do commit "Adicionar nova linha">
+
+    # É sexta-feira e você subiu para produção um código que deu problema!
+    # Precisa reverter para voltar a funcionar antes de ir embora e na segunda 
+    # retomar a alteração "problema" para corrigi-la
+    # Com o 'reset' perderia tudo
+    # Com o 'revert', o código é revertido, fica como era antes desta alteração (basta subir novamente para produção)
+    # E a alteração permanece "problema" permanece no histórico, basta fazer um checkout do hash e retomar depois
+    # Gera um commit qdo faz o revert
+    $ git revert <hash do commit que deu problema, no exemplo, o commit do "Adicionar nova linha">
+
+    $ git status
+    # A saída será algo:
+    # No ramo master
+    # Seu ramo está à frente de 'origin/master' por 2 submissões.
+    # (use "git push" to publish your local commits)
+    # nothing to commit, working tree clean
+
+    # Subir para o repositório remoto
+    $ git push
+
+    # Listar os commits (os dois últimos: o do 'Revert "Adicionar nova linha"' e o 'Adicionar nova linha')
+        commit cd777b92db35c39e5d77355c8cce9d1d6800459d (HEAD -> master)
+        //...
+        Revert "Adicionar nova linha"            
+        This reverts commit f49f5d5bde71fee9391b9bf65f303bbe0b12db0d.
+
+        commit f49f5d5bde71fee9391b9bf65f303bbe0b12db0d
+        //...
+        Adicionar nova linha
+
+        // Outros commits...
+    $ git log
+
+    # Visualizar o commit que fez revert
+    $ git show <hash do commit que fez o revert (no exemplo, cd777b92db35c39e5d77355c8cce9d1d6800459d)>
+
+## Apagando tags e branches remotos
+
+    Listar as tags
+    $ git tag
+
+    # Removendo tag do repositório local
+    $ git tag -d <nome-tag>
+    $ git tag -d 1.0.0
+
+    # Removendo a tag do repositório remoto
+    # Entre os dois pontos e o nome da tag não pode haver espaço
+    $ git push origin :1.0.0
+
+    # Removendo branch do repositório local
+    $ git branch -D test
+
+    # Removendo o branch do repositório remoto
+    $ git push origin :<nome-branch-que-quer-remover>
+    $ git push origin :test
