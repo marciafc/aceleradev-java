@@ -4,6 +4,8 @@
 
 Realizar o curso [Git e Github para iniciantes da Udemy](https://www.udemy.com/course/git-e-github-para-iniciantes/)
 
+[5 dicas para fazer um bom Code Review](https://medium.com/@ericabertan/5-dicas-para-fazer-um-bom-code-review-2ac135b0233c)
+
 [Diferenças entre o Subversion e o Git
 ](https://help.github.com/pt/github/importing-your-projects-to-github/what-are-the-differences-between-subversion-and-git)
 
