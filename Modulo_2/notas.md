@@ -8,22 +8,24 @@
  
  - [Java Exceptions](https://www.devmedia.com.br/trabalhando-com-excecoes-em-java/27601)
 
-  - [Entendendo e Aplicando Herança em Java](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544)
+ - [Entendendo e Aplicando Herança em Java](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544)
 
-  - Orientação, classes e objetos
+ - Orientação, classes e objetos
 
-  - Encapsulamento
+ - Encapsulamento
 
-  - Exceptions
+ - Exceptions
 
-  - Herança e Polimorfismo
+ - Herança e Polimorfismo
 
-  - Desafios
-    - Gerenciador de Times de Futebol
-    - Controle de estacionamento
-    - Media, Moda e Mediana
+ - Desafios
+   - Gerenciador de Times de Futebol
+   - Controle de estacionamento
+     - [Construindo objetos de forma inteligente: Builder Pattern e Fluent Interfaces](http://luizricardo.org/2013/08/construindo-objetos-de-forma-inteligente-builder-pattern-e-fluent-interfaces) 
+   - Media, Moda e Mediana
 
   - Feedback semanal
+ 
 
 ## Java
 
