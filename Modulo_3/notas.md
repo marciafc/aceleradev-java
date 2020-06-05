@@ -91,11 +91,160 @@ public class MeuApp {
 }
  ```
 
+A partir do **Java 8**, as interfaces possuém **métodos default**.
+
+O **modificador default** permite que se **adicione métodos a uma interface sem o risco de perder compatibilidade com versões anteriores**. A implementação do método default da interface é usada caso a classe concreta não o implemente.
+
+```java
+public interface ICaixaEletronico {
+	void sacar(float valor);
+}
+
+public class CaixaEletronico implements ICaixaEletronico {
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Vou sacar " + valor);
+	}
+}
+```
+
+Se for definido um **método novo na interface ICaixaEletronico**, o mesmo deverá ser implementado na classe CaixaEletronico. **Com o modificador default não é mais necessário programar na classe que implementa**.
+
+```java
+public interface ICaixaEletronico {
+
+	void sacar(float valor);
+	
+    // Modificador default
+    // Implementação fica na interface (não precisa adicionar na classe que implementa)
+    default void verificaFraude(){
+		System.out.println("Verificação de fraude iniciada");
+	}
+}
+
+public class CaixaEletronico implements ICaixaEletronico {
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Vou sacar " + valor);
+	}
+}
+
+public class Principal {
+
+	public static void main(String[] args) {
+		CaixaEletronico caixa = new CaixaEletronico();
+		caixa.verificaFraude();
+		caixa.sacar(10);
+	}
+
+}
+```
+
+Pode alterar a implementação (CaixaEletronico) também:
+
+```java
+public class CaixaEletronico implements ICaixaEletronico {
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Vou sacar " + valor);
+	}
+	
+	@Override
+	public void verificaFraude() {
+		System.out.println("Verificação de fraude na classe");
+	}
+}
+```
+
+Atenção com possíveis conflitos de método default
+  - Duplicate default methods named "nomeDoMetodoEmConflito" with the parameters () and () are inherited from the types...
+
+```java
+public interface IInternetBanking {
+
+    // Método default verificaFraude()
+	default void verificaFraude(){
+		System.out.println("Verificação de fraude iniciada - Internet Banking");
+	}
+}
+
+public interface ICaixaEletronico {
+
+	void sacar(float valor);
+
+    // Método default verificaFraude()
+	default void verificaFraude(){
+		System.out.println("Verificação de fraude iniciada");
+	}
+}
+
+// Neste caso, a classe não compilará!
+// Erro de método default duplicado
+public class Banco implements ICaixaEletronico, IInternetBanking {
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Sacando " + valor + " do banco");
+	}
+	
+}
+
+// Soluções:
+
+// 1) Implementar o método conflituoso
+public class Banco implements ICaixaEletronico, IInternetBanking{
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Sacando " + valor + " do banco");
+	}
+	
+    // Implementação do método que ocorreu conflito
+	@Override
+	public void verificaFraude() {
+		System.out.println("Verificação de fraude direto no banco");
+	}
+}
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Banco banco = new Banco();
+		banco.verificaFraude();
+		banco.sacar(10);
+	}
+}
+
+// 2) Invocar o método da interface desejada
+
+public class Banco implements ICaixaEletronico, IInternetBanking{
+
+	@Override
+	public void sacar(float valor) {
+		System.out.println("Sacando " + valor + " do banco");
+	}
+	
+	@Override
+	public void verificaFraude() {
+
+        // Chamando o método que ocorreu conflito da interface desejada 
+        // No caso, IInternetBanking
+		IInternetBanking.super.verificaFraude();
+	}
+}
+
+```
+
 Fonte: 
 
 [Entendendo interfaces em Java](https://www.devmedia.com.br/entendendo-interfaces-em-java/25502)
 
 [Java Interface: Aprenda a usar corretamente](https://www.devmedia.com.br/java-interface-aprenda-a-usar-corretamente/28798)
+
+[Métodos Default — Java 8](https://medium.com/@RafaelSermenho/m%C3%A9todos-default-java-8-d0ca312fea47)
 
 ## Polimorfismo
 
