@@ -17,6 +17,8 @@
   - Interfaces (vídeo)
 
   - Classes Abstratas (vídeo)
+    - [Template Method, Hook Method - UFCG](http://www.dsc.ufcg.edu.br/~jacques/cursos/map/html/pat/template.htm)
+	- [Template Method, Hook Method - Source Making](https://sourcemaking.com/design_patterns/template_method)
 
   - Java Reflection (vídeo)
 
@@ -219,7 +221,6 @@ public class Principal {
 }
 
 // 2) Invocar o método da interface desejada
-
 public class Banco implements ICaixaEletronico, IInternetBanking{
 
 	@Override
@@ -350,6 +351,58 @@ Benefícios do Java Reflection
   - Ganho de Produtividade
   - Padronização
   - Extensibilidade
+
+Exemplos:
+
+```java
+public class Pessoa {
+
+    private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
+
+// Utilizando Reflection com a classe Pessoa
+
+// Obtém os métodos da classe Pessoa
+// Exemplo: public void Pessoa.setNome(java.lang.String)
+Arrays.stream(Pessoa.class.getMethods()).forEach(System.out::println);
+
+// Somente os nomes dos métodos da classe Pessoa
+// Exemplo: getNome
+Arrays.stream(Pessoa.class.getMethods()).forEach(method -> System.out.println(method.getName()));
+
+// Trocando getMethods por getDeclaredMethods
+// vem somente os métodos declarados da classe, não vem mais os da superclasse (Object)
+Arrays.stream(Pessoa.class.getDeclaredMethods()).forEach(method -> System.out.println(method.getName()));
+
+// Retorno de cada método da classe
+// Exemplo: class java.lang.String
+Arrays.stream(Pessoa.class.getDeclaredMethods()).forEach(method -> System.out.println(method.getReturnType()));
+
+// Nome dos atributos da classe
+// Exemplo: nome
+Arrays.stream(Pessoa.class.getDeclaredFields()).forEach(field -> System.out.println(field.getName()));
+
+// Altera o valor de um campo
+Pessoa pessoa = new Pessoa();
+pessoa.setNome("Marcia");
+Field nome = Pessoa.class.getDeclaredField("nome"); //  NoSuchFieldException se o atributo "nome" não existir
+nome.setAccessible(true); // Permite acessar um campo privado
+nome.set(pessoa, "Novo nome"); // IllegalAccessException se não tiver acesso (for private)
+System.out.println(pessoa.getNome());
+
+```
+
+[Can you find all classes in a package using reflection?](https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection)
+
+  [The Reflections Library](https://github.com/ronmamo/reflections)
 
 ```java
 public class Arquivo {
@@ -771,14 +824,16 @@ public void testeConjuntoVazio() {
 // de classes ou interfaces. @Retention é usada para escolher entre essas possibilidades.
 //
 // Suporta três valores:
-// - SOURCE: anotações marcadas não estarão no código binário;
+// - SOURCE: anotações marcadas não estarão no código binário
 // - CLASS: gravar as anotações no arquivo .class, não estarão disponíveis em tempo de execução
 // - RUNTIME: anotações estarão disponíveis em tempo de execução
+// Documentação: https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Retention.html
 @Retention
 
 
 // Notação marcadora usada para indicar que os tipos anotação anotados com ela 
 // serão incluídos na documentação Javadoc
+// Documentação: https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Documented.html
 @Documented
 
 // Ao criar um tipo anotação é possível estabelecer que elementos 
@@ -791,14 +846,15 @@ public void testeConjuntoVazio() {
 // - LOCAL_VARIABLE
 // - PARAMETER
 // - METHOD
+// - FIELD
+// - Dentre outros. Documentação: https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Target.html
 @Target 
 
 // Por padrão anotações declaradas em uma classe não são herdadas pelas subclasses. 
 // Mas, se for necessário que essa herança ocorra, então o tipo anotação que 
 // desejamos que seja herdado deve ser anotado com @Inherited
-
-// Restringe-se apenas a classes. Por exemplo, anotações em interfaces
-// não são herdadas pelas classes que as implementam.
+// Restringe-se apenas a classes. 
+// https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Inherited.html
 @Inherited
 ```
 
@@ -927,6 +983,7 @@ public class TesteAnotacao {
     }
 }
 ```
+
 Fonte:
 
 [Entendendo Anotações em Java](https://www.devmedia.com.br/entendendo-anotacoes-em-java/26772)
