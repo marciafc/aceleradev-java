@@ -400,9 +400,7 @@ System.out.println(pessoa.getNome());
 
 ```
 
-[Can you find all classes in a package using reflection?](https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection)
-
-  [The Reflections Library](https://github.com/ronmamo/reflections)
+[Can you find all classes in a package using reflection?](https://stackoverflow.com/questions/520328/can-you-find-all-classes-in-a-package-using-reflection)[The Reflections Library](https://github.com/ronmamo/reflections)
 
 ```java
 public class Arquivo {
