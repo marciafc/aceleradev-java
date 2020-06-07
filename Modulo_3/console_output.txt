@@ -1,0 +1,121 @@
+Hibernate: 
+    alter table Aluno 
+        drop constraint FK_q1orauc98okm9teb4e1tbp9pi
+Hibernate: 
+    alter table Coordenador 
+        drop constraint FK_ig1qkexu63hkrakf9cnk9djwi
+Hibernate: 
+    alter table Diretor 
+        drop constraint FK_bbjhrglvpeosupmhvk0i2j64m
+Hibernate: 
+    alter table Disciplina 
+        drop constraint FK_nfuaxi5fhpxt8qpp7anl421gg
+Hibernate: 
+    alter table Professor 
+        drop constraint FK_lpaonedtuyvc4f2lumj5sgvmc
+Hibernate: 
+    alter table disciplina_aluno 
+        drop constraint FK_nxeepitsuc7eboo9xeq85hmoo
+Hibernate: 
+    alter table disciplina_aluno 
+        drop constraint FK_lx1io5lbibjjev474hywwyjrk
+Hibernate: 
+    drop table if exists Aluno cascade
+Hibernate: 
+    drop table if exists Coordenador cascade
+Hibernate: 
+    drop table if exists Diretor cascade
+Hibernate: 
+    drop table if exists Disciplina cascade
+Hibernate: 
+    drop table if exists Professor cascade
+Hibernate: 
+    drop table if exists Usuario cascade
+Hibernate: 
+    drop table if exists disciplina_aluno cascade
+Hibernate: 
+    create table Aluno (
+        numeroMatricula int4,
+        id int8 not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table Coordenador (
+        matricula int4,
+        id int8 not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table Diretor (
+        dataCargo varchar(255),
+        id int8 not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table Disciplina (
+        id int8 not null,
+        descricao varchar(255),
+        nome varchar(255),
+        idProfessor int8,
+        primary key (id)
+    )
+Hibernate: 
+    create table Professor (
+        id int8 not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table Usuario (
+        id int8 not null,
+        cpf varchar(14) not null,
+        login varchar(255) not null,
+        nome varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table disciplina_aluno (
+        idAluno int8 not null,
+        idDisciplina int8 not null
+    )
+Hibernate: 
+    alter table Usuario 
+        add constraint UK_898atepo5gx8dqj60c07k766b  unique (cpf)
+Hibernate: 
+    alter table Aluno 
+        add constraint FK_q1orauc98okm9teb4e1tbp9pi 
+        foreign key (id) 
+        references Usuario
+Hibernate: 
+    alter table Coordenador 
+        add constraint FK_ig1qkexu63hkrakf9cnk9djwi 
+        foreign key (id) 
+        references Usuario
+Hibernate: 
+    alter table Diretor 
+        add constraint FK_bbjhrglvpeosupmhvk0i2j64m 
+        foreign key (id) 
+        references Usuario
+Hibernate: 
+    alter table Disciplina 
+        add constraint FK_nfuaxi5fhpxt8qpp7anl421gg 
+        foreign key (idProfessor) 
+        references Professor
+Hibernate: 
+    alter table Professor 
+        add constraint FK_lpaonedtuyvc4f2lumj5sgvmc 
+        foreign key (id) 
+        references Usuario
+Hibernate: 
+    alter table disciplina_aluno 
+        add constraint FK_nxeepitsuc7eboo9xeq85hmoo 
+        foreign key (idDisciplina) 
+        references Disciplina
+Hibernate: 
+    alter table disciplina_aluno 
+        add constraint FK_lx1io5lbibjjev474hywwyjrk 
+        foreign key (idAluno) 
+        references Aluno
+jun 06, 2020 10:29:35 PM org.hibernate.tool.hbm2ddl.SchemaExport execute
+INFO: HHH000230: Schema export complete
+jun 06, 2020 10:29:35 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:postgresql://172.17.0.2:5432/curso]

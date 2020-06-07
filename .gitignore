@@ -24,3 +24,6 @@
 /nbdist/
 /.nb-gradle/
 
+*.class
+Modulo_3/Aula3/target/
+

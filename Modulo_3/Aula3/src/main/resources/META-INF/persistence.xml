@@ -1,0 +1,27 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+
+    <persistence-unit name="curso">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://172.17.0.2:5432/curso"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres123"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL82Dialect"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!--
+            create: cria o schema, destruindo dados anteriores.
+            create-drop: cria o schema, drop o schema quando ao terminar a sessão ( factory.close() ).
+            validate: validar o schema, não faz mudanças no banco de dados.
+            update: faz update o schema.
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
