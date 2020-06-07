@@ -29,9 +29,6 @@ Instalação do banco de dados Postgres com Docker
     
     $ sudo apt install pgadmin4 pgadmin4-apache2
 
-    // Acessar pgAdmin pelo browser
-    http://127.0.0.1:41565/browser
-
     // Cria container com o Postgres com nome postgres-container
     // Configura a senha do banco com POSTGRES_PASSWORD
     // Usuário padrão é postgres
@@ -47,6 +44,10 @@ Instalação do banco de dados Postgres com Docker
     // Lembrando que "postgres-container" é o nome do container
     // IP está no final, procurar por IPAddress
     $ docker inspect postgres-container
+	
+	// Acessar pgAdmin pelo browser	 
+    http://127.0.0.1:41565/browser
+	Criar database com nome "curso"
 
 ## DDL data definition languagem    
 
