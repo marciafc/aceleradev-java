@@ -47,7 +47,6 @@ Instalação do banco de dados Postgres com Docker
 	
 	// Acessar pgAdmin pelo browser	 
     http://127.0.0.1:41565/browser
-	Criar database com nome "curso"
 
 ## DDL data definition languagem    
 
@@ -185,12 +184,15 @@ create table Professor (
 alter table Disciplina 
 add constraint FK_nfuaxi5fhpxt8qpp7anl421gg 
 foreign key (idProfessor) references Professor
-```sql    
+```    
+
+## Projeto de estudo
+
+Criar no Postgres o database com nome "curso"
+
+Ver PrincipalJpa.java (projeto está na [Aula3](../Modulo_3) - evolução do projeto com interface e classe abstrata)
 
 Ao executar a classe que cria o EntityManagerFactory, é possível ver no console as tabelas serem criadas conforme as anotações.
-
-  - Ver arquivo console_output.txt (arquivo está no \Modulo_3)
-  - Ver PrincipalJpa.java (projeto está no \Modulo_3\Aula3)
-
+  - Ver arquivo [console_output.txt](../Modulo_3)
 
 
