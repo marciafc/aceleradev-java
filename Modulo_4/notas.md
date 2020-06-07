@@ -200,7 +200,7 @@ Ao executar a classe que cria o EntityManagerFactory, é possível ver no consol
 Site [Spring Initializr](https://start.spring.io)
   - Gera projeto inicial
 
-Código-fonte está em "SpringDataExemplo"
+Código-fonte está na pasta "SpringDataExemplo" deste módulo.
 
 ```java
 // Classe que starta o projeto e deve ficar na raiz
@@ -243,7 +243,7 @@ Chave primária composta
   @IdClass(MinhaClasse.class)
 ```  
 
-@EmbeddedId
+### Abordagem @EmbeddedId
 
  - @Embeddable: informa que não é uma entidade, é embarcada em outra entidade (abordagem @EmbeddedId)
 
@@ -260,10 +260,18 @@ Chave primária composta
 
 ## Console web do banco h2
 
-Incluir estas configurações no application.properties
+Incluir estas configurações no application.properties:
 
 ```
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2
 ```
 
+Após executar o projeto "SpringDataExemplo", é possível acessar o banco de dados em:
+
+http://localhost:8080/h2
+
+
+Fontes:
+
+[Spring Boot With H2 Database](https://www.baeldung.com/spring-boot-h2-database)
