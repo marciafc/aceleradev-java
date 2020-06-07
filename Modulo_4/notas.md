@@ -6,7 +6,21 @@
 
  - Spring Boot (vídeo) 
 
- - [dz\d]() 
+ - [pgAdmin - PostgreSQL Tools for Windows, Mac, Linux and the Web](https://www.pgadmin.org/download) 
+   - [Site do Edivaldo Brito - Como instalar o pgAdmin4 no Ubuntu e derivados](https://www.edivaldobrito.com.br/pgadmin4-no-ubuntu/)
+
+ - [Como Instalar e Utilizar o PostgreSQL no Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/como-instalar-e-utilizar-o-postgresql-no-ubuntu-16-04-pt)  
+
+ - [Instalando Postgresql](https://www.devmedia.com.br/instalando-postgresql/23364)
+
+ - [Learn PostgreSQL from Scratch](https://www.postgresqltutorial.com/)
+
+ - [Guia Completo de Hibernate: Aprenda Hibernate do Básico ao Avançado](https://www.devmedia.com.br/guia/hibernate/38312)
+
+ - Desafio
+   - Criando Entidades de Banco de Dados em Java
+
+- Feedback semanal
 
 
 ## Ambiente de desenvolvimento
