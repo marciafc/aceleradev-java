@@ -186,7 +186,7 @@ add constraint FK_nfuaxi5fhpxt8qpp7anl421gg
 foreign key (idProfessor) references Professor
 ```    
 
-## Projeto de estudo
+## Projeto de estudo JPA/Hibernate
 
 Criar no Postgres o database com nome "curso"
 
@@ -195,4 +195,75 @@ Ver PrincipalJpa.java (projeto está na [Aula3](../Modulo_3) - evolução do pro
 Ao executar a classe que cria o EntityManagerFactory, é possível ver no console as tabelas serem criadas conforme as anotações.
   - Ver arquivo [console_output.txt](../Modulo_3)
 
+## Projeto de estudo Spring Boot + Spring Data
+
+Site [Spring Initializr](https://start.spring.io)
+  - Gera projeto inicial
+
+Código-fonte está em "SpringDataExemplo"
+
+```java
+// Classe que starta o projeto e deve ficar na raiz
+// Se colocar em outro local, deve informar qual package será scanneado
+// em @SpringBootApplication(...)
+
+// https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/SpringBootApplication.html
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+## Bean Validations
+
+@NotNull
+
+@NotBlank
+
+@Size
+
+@Min
+
+@Max
+
+## Annotation
+
+Chave primária composta
+  - [Qual a diferença entre EmbeddedId e IdClass no Hibernate?](https://pt.stackoverflow.com/questions/307063/qual-a-diferen%C3%A7a-entre-embeddedid-e-idclass-no-hibernate)
+
+```java
+  @EmbeddedId 
+  
+
+  // OU
+
+  @IdClass(MinhaClasse.class)
+```  
+
+@EmbeddedId
+
+ - @Embeddable: informa que não é uma entidade, é embarcada em outra entidade (abordagem @EmbeddedId)
+
+ - Classe mapeada com @Embeddable deve implementar Serializable
+    - Boa prática SOBRESCREVER o equals e hashCode (evita warning)
+      1) Generate equals and hashCode 
+      2) Template: IntelliJ Default
+      3) Marcar Accept_subclasses... (MARCAR)
+      4) Marcar Use getters...(não precisa marcar)
+      5) Next
+      6) Marcar todos os campos que estarão no equals
+      7) Marcar todos os campos que estarão no hashCode
+      8) Marcar os campos não null: não testará campos null no equals e hashCode
+
+## Console web do banco h2
+
+Incluir estas configurações no application.properties
+
+```
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+```
 
