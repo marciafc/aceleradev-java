@@ -288,4 +288,24 @@ http://localhost:8080/h2
 
 Fontes:
 
+[Primeiros passos com o Spring Boot](https://www.devmedia.com.br/primeiros-passos-com-o-spring-boot/33654)
+
+[O que é Spring Boot?](https://blog.algaworks.com/spring-boot/)
+
+[Integração do JPA com Spring Framework](https://www.devmedia.com.br/integracao-do-jpa-com-spring-framework/34221)
+
+[Criando Entidades JPA com H2](https://academiadev.gitbook.io/joinville/jpa/criando-entidades-jpa-com-h2)
+
 [Spring Boot With H2 Database](https://www.baeldung.com/spring-boot-h2-database)
+
+[Como utilizar o Banco de Dados h2 com Spring Boot](https://receitasdecodigo.com.br/spring-boot/como-utilizar-o-banco-de-dados-h2-com-spring-boot)
+
+[JPA and Hibernate One To Many Relationship Mapping Example with Spring Boot, Spring Data JPA and MySQL](https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/)
+
+[All JPA Annotations: Mapping Annotations](https://dzone.com/articles/all-jpa-annotations-mapping-annotations)
+
+[Hibernate One to Many Annotation Tutorial](https://www.baeldung.com/hibernate-one-to-many)
+
+[Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
+
+[Spring Data Jpa Audit Example](https://rashidi.github.io/spring-boot-data-audit/)
