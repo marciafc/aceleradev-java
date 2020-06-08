@@ -123,7 +123,21 @@ Será criado arquivo pom.xml no projeto
 
 @Entity: referencia uma tabela no banco de dados
 
-@Inheritance(strategy = InheritanceType.JOINED): herança com estratégia que outras classes herdam desta classe. Existem outras estratégias. [Referência Inheritance](https://docs.oracle.com/javaee/7/tutorial/persistence-intro002.htm)
+Estratégias para persistir entidades com HERANÇA:
+
+ - @Inheritance(strategy = InheritanceType.JOINED)
+    - tabela superclasse: somente os campos da superclasse
+	- tabela subclasse: somente os campos da subclasse + coluna "id" (para join com tabela superclasse)
+ 
+ - @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+   - tabela superclasse: somente os campos da superclasse
+   - tabela subclasse: todos os campos da superclasse e da subclasse
+ 
+ - @Inheritance(strategy = InheritanceType.SINGLE_TABLE): 
+   - tabela da superclasse: todos os campos de todas subclasses + uma coluna "dtype" para definir como texto o tipo de subclasse
+   - tabela da subclasse: todos os campos da superclasse e da subclasse 
+
+[Referência Inheritance](https://docs.oracle.com/javaee/7/tutorial/persistence-intro002.htm)
 
 @Id: mapeia o campo como chave primária. Obrigatório.
 
@@ -204,7 +218,7 @@ foreign key (idProfessor) references Professor
 
 Criar no Postgres o database com nome "curso"
 
-Ver PrincipalJpa.java (projeto está na [Aula3](../Modulo_3) - evolução do projeto com interface e classe abstrata)
+Ver PrincipalJpa.java (projeto está na [Aula3](../Modulo_3) - evolução do projeto agora com JPA/Hibernate)
 
 Ao executar a classe que cria o EntityManagerFactory, é possível ver no console as tabelas serem criadas conforme as anotações.
   - Ver arquivo [console_output.txt](../Modulo_3)
