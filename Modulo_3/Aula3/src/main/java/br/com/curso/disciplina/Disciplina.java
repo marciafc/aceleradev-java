@@ -1,6 +1,7 @@
 package br.com.curso.disciplina;
 
 import br.com.curso.aluno.Aluno;
+import br.com.curso.exception.LimiteAlunosAlcancadoException;
 import br.com.curso.professor.Professor;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Disciplina {
     private static final byte LIMITE = 10;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String nome;
@@ -33,6 +35,14 @@ public class Disciplina {
     public Disciplina(String nome, Professor professor) {
         this.nome = nome;
         this.professor = professor;
+    }
+
+    public void matricular(Aluno aluno) throws LimiteAlunosAlcancadoException {
+        if(this.alunos.size() < LIMITE) {
+            this.alunos.add(aluno);
+        } else {
+            throw new LimiteAlunosAlcancadoException("Limite de alunos alcançado. O limite é " + LIMITE);
+        }
     }
 
     public Long getId() {

@@ -32,4 +32,5 @@ public class Aluno extends Usuario {
     public void setNumeroMatricula(Integer numeroMatricula) {
         this.numeroMatricula = numeroMatricula;
     }
+
 }
