@@ -154,10 +154,81 @@ public class AlunoDAO {
 }
 ```
 
-
-
-
- 
-
-
 ## Projeto de estudo Spring Boot + Spring Data
+
+Código-fonte está na pasta "SpringDataExemplo" no [Módulo 4](../Modulo_4) evolução do projeto agora com a parte de persistência
+
+Uma classe "Repository" no Spring é similar ao DAO do Hibernate.
+
+Documentação [Repository](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/package-summary.html)
+ 
+ - Exemplos: CrudRepository, JpaRepository, etc...
+
+```java
+public interface LivroRepository extends CrudRepository<Livro, Long> {
+
+}
+
+// Usa Generics
+CrudRepository<Livro, Long>
+
+```
+
+**"LivroRepository"** só por herdar de alguma classe do tipo "XRepository" já tem uma série de métodos prontos.
+
+E o que não tem? Basta seguir a **convenção no nome dos métodos criados no Repository**.
+
+Como criar um método que pesquisa pelo titulo?
+  - findByTitulo
+  
+Convenção: **findByX**, onde X é o atributo que deseja pesquisar
+
+```java
+public interface LivroRepository extends CrudRepository<Livro, Long> {
+	
+	// Gera um select * from livro where titulo = ?	
+	List<Livro> findByTitulo(String nome);
+	
+}	
+
+@Entity
+public class Livro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @NotNull
+    private String titulo;
+}	
+```
+
+Como criar através da convenção pesquisas com **LIKE**?
+ - findByXContaining, onde X é o atributo que deseja pesquisar
+
+```java
+List<Livro> findByTituloContaining(String titulo);
+```
+
+## Controller 
+
+ - Objeto JAVA para objeto JSON -> serialização
+ 
+ - Objeto JSON para objeto JAVA -> deserialização
+ 
+ 
+## Query nativa
+
+```java
+@Query(value = "select * from LIVRO livro " +
+				"INNER JOIN LIVRO_CATEGORIA cl " +
+				"ON livro.id = cl.id_livro " +
+				"INNER JOIN categoria c " +
+				"ON c.id = cl.id_categoria " +
+				"where c.nome like %:nomeCategoria%", nativeQuery = true)
+List<Livro> findByNomeCategoria(@Param("nomeCategoria") String nomeCategoria);
+
+
+```
+
+

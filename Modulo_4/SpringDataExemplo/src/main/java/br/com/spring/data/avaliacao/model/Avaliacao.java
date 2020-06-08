@@ -37,12 +37,4 @@ public class Avaliacao {
     public void setNota(Byte nota) {
         this.nota = nota;
     }
-
-    public String getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(String avaliacao) {
-        this.avaliacao = avaliacao;
-    }
 }

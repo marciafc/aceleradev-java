@@ -22,7 +22,13 @@ public class Livro {
     private List<Avaliacao> avaliacoes;
 
     @ManyToMany
+    @JoinTable(name="LIVRO_CATEGORIA",
+            joinColumns=@JoinColumn(name="idLivro"),
+            inverseJoinColumns=@JoinColumn(name="idCategoria"))
     private List<Categoria> categorias;
+
+    public Livro() {
+    }
 
     public Livro(String titulo) {
         this.titulo = titulo;
