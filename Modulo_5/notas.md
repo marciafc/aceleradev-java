@@ -66,7 +66,7 @@ Exemplo:
 
 **@ManyToOne o default é EAGER**. Sem problemas, pois será apenas UM objeto, não um List.
 
-**@ManyToMany OU **@OneToMany o default é LAZY** para otimizar. Nestes casos são List e poderia onerar.
+**@ManyToMany OU @OneToMany o default é LAZY** para otimizar. Nestes casos são List e poderia onerar.
 
 ```java
 
@@ -74,15 +74,15 @@ Exemplo:
 public class Disciplina {
 
 	@ManyToOne
-    @JoinColumn(name = "idProfessor")
-    private Professor professor;
+	@JoinColumn(name = "idProfessor")
+	private Professor professor;
 
 	@ManyToMany
-    @JoinTable(name = "disciplina_aluno",
-            joinColumns = {@JoinColumn(name = "idDisciplina")},
-            inverseJoinColumns = {@JoinColumn(name = "idAluno")}
-    )
-    private List<Aluno> alunos = new ArrayList<>();
+	@JoinTable(name = "disciplina_aluno",
+			joinColumns = {@JoinColumn(name = "idDisciplina")},
+			inverseJoinColumns = {@JoinColumn(name = "idAluno")}
+	)
+	private List<Aluno> alunos = new ArrayList<>();
 	
 }
 
@@ -101,9 +101,9 @@ Onde há List (default é fetch = FetchType.LAZY), ao invés de simplesmente tro
 ```java
 public class Disciplina {
 
-	// Mantenha como LAZY!
-    @ManyToMany
-    @JoinTable(name = "disciplina_aluno",
+	//Mantenha como LAZY!
+	@ManyToMany
+	@JoinTable(name = "disciplina_aluno",
             joinColumns = {@JoinColumn(name = "idDisciplina")},
             inverseJoinColumns = {@JoinColumn(name = "idAluno")}
     )
