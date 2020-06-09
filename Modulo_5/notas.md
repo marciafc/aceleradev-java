@@ -6,8 +6,105 @@
 
  - Spring Data DML (vídeo) 
 
- - []()
+ - [Spring Data Annotations](https://www.baeldung.com/spring-data-annotations)
+ 
+ - 🔝 [Spring Data JPA - Reference Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference)
 
+ - [Database auditing JPA](https://www.baeldung.com/database-auditing-jpa)
+   - Auditoria com JPA
+   - Hibernate Envers
+   - Spring Data JPA
+
+ - [JPA Auditing](http://techie-mixture.blogspot.com/2018/01/spring-data-jpa-auditing-auto-save.html)
+
+ - [Spring data JPA Query](https://www.baeldung.com/spring-data-jpa-query)
+   - [Query](https://www.baeldung.com/spring-data-jpa-query#select-query)
+     1) [JPQL](https://www.baeldung.com/spring-data-jpa-query#1-jpql)
+     2) [Native](https://www.baeldung.com/spring-data-jpa-query#2-native)
+
+   - [Define Order in a Query](https://www.baeldung.com/spring-data-jpa-query#define-order-in-a-query)
+     1) [Sorting for JPA Provided and Derived Methods](https://www.baeldung.com/spring-data-jpa-query#1-sorting-for-jpa-provided-and-derived-methods)
+	 2) [JPQL](https://www.baeldung.com/spring-data-jpa-query#2-jpql)
+	 3) [Native](https://www.baeldung.com/spring-data-jpa-query#3-native)
+
+   - [Pagination](https://www.baeldung.com/spring-data-jpa-query#pagination)
+     1) [JPQL](https://www.baeldung.com/spring-data-jpa-query#1-jpql-1)
+	 2) [Native](https://www.baeldung.com/spring-data-jpa-query#2-native-1)
+	 3) [Spring Data JPA Versions Prior to 2.0.4](https://www.baeldung.com/spring-data-jpa-query#3-spring-data-jpa-versions-prior-to-204)
+
+   - [Indexed Query Parameters](https://www.baeldung.com/spring-data-jpa-query#indexed-query-parameters)
+     1) [JPQL](https://www.baeldung.com/spring-data-jpa-query#1-jpql-2)
+	 2) [Native](https://www.baeldung.com/spring-data-jpa-query#2-native-2)
+
+   - [Named Parameters](https://www.baeldung.com/spring-data-jpa-query#named-parameters)
+     1) [JPQL](https://www.baeldung.com/spring-data-jpa-query#1-jpql-3)
+	 2) [Native](https://www.baeldung.com/spring-data-jpa-query#2-native-3)
+
+   - [Collection Parameter](https://www.baeldung.com/spring-data-jpa-query#collection-paameter)
+
+   - [Update Queries With @Modifying](https://www.baeldung.com/spring-data-jpa-query#update-queries-with-modifying)
+     1) [JPQL](https://www.baeldung.com/spring-data-jpa-query#1-jpql-4)
+	 2) [Native](https://www.baeldung.com/spring-data-jpa-query#2-native-4)
+	 3) [Inserts](https://www.baeldung.com/spring-data-jpa-query#3-inserts)
+
+   - [Dynamic Query](https://www.baeldung.com/spring-data-jpa-query#dynamic-query)	 
+     1) [Dynamic Query](https://www.baeldung.com/spring-data-jpa-query#1-example-of-a-dynamic-query)
+	 2) [Custom Repositories and the JPA Criteria API](https://www.baeldung.com/spring-data-jpa-query#2-custom-repositories-and-the-jpa-criteria-api)
+	 3) [Extending the Existing Repository](https://www.baeldung.com/spring-data-jpa-query#3-extending-the-existing-repository)
+	 4) [Using the Repository](https://www.baeldung.com/spring-data-jpa-query#4-using-the-repository)
+
+   - [Exemplo Github](https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-persistence-simple)	 
+
+  - [Introduction to Query Methods](https://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-introduction-to-query-methods/)
+     - Query Methods
+
+	 - Returning Values From Query Methods
+	   - Basic type
+	   - Entity
+	   - Guava / Java 8 Optional<T>
+	   - List<T>
+	   - Stream<T>
+	   - Executed asynchronously Future<>
+
+			```java
+			import java.util.concurrent.Future;
+			import java.util.stream.Stream;
+			import org.springframework.data.jpa.repository.Query;
+			import org.springframework.data.repository.Repository;
+			import org.springframework.data.repository.query.Param;
+			import org.springframework.scheduling.annotation.Async;
+			
+			interface TodoRepository extends Repository<Todo, Long> { 
+			
+				@Async
+				@Query("SELECT t.title FROM Todo t where t.id = :id") 
+				Future<String> findTitleById(@Param("id") Long id);
+				
+				@Async
+				@Query("SELECT t.title FROM Todo t where t.id = :id") 
+				Future<Optional<String>> findTitleById(@Param("id") Long id);
+			
+				@Async
+				Future<Todo> findById(Long id);
+				
+				@Async
+				Future<Optional<Todo>> findById(Long id);
+			
+				@Async
+				Future<List<Todo>> findByTitle(String title);
+				
+				@Async
+				Future<Stream<Todo>> findByTitle(String title);
+			}	   
+			```
+	 - Passing Method Parameters to Query Methods
+ 
+ - Desafios
+   - Criando e manipulando entidades no Banco de dados com Spring
+   - Order Service
+
+ - Feedback semanal
+ 
 ## DML Data Manipulation Language
 
 INSERT
@@ -228,7 +325,4 @@ List<Livro> findByTituloContaining(String titulo);
 				"where c.nome like %:nomeCategoria%", nativeQuery = true)
 List<Livro> findByNomeCategoria(@Param("nomeCategoria") String nomeCategoria);
 
-
 ```
-
-
