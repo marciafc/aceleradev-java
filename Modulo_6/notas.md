@@ -33,7 +33,7 @@
 
 ## Projeto Spring Boot, Spring Data e Spring Web
 
-Projeto [SpringDataExemplo](../SpringDataExemplo)
+Projeto [SpringDataExemplo](../Modulo_4/SpringDataExemplo)
 
 Verbos HTTP
 
