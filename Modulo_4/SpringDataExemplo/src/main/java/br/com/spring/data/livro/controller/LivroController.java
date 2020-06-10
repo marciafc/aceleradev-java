@@ -1,10 +1,16 @@
 package br.com.spring.data.livro.controller;
 
+import br.com.spring.data.controller.ResourceNotFoundException;
 import br.com.spring.data.livro.model.Livro;
 import br.com.spring.data.livro.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -15,18 +21,27 @@ public class LivroController {
     private LivroService livroService;
 
     @PostMapping
-    public Livro save(@RequestBody Livro livro) {
-        return this.livroService.save(livro);
+    public ResponseEntity<Livro> create(@Valid @RequestBody Livro livro) {
+        return new ResponseEntity<Livro>(this.livroService.save(livro), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<Livro> update(@Valid @RequestBody Livro livro) {
+        return new ResponseEntity<Livro>(this.livroService.save(livro), HttpStatus.ACCEPTED);
     }
 
     @GetMapping
-    public Iterable<Livro> findAll() {
-        return this.livroService.findAll();
+    public Iterable<Livro> findAll(@PathParam("nome") String nome, Pageable pageable) {
+        if (nome != null) {
+            return this.livroService.findByNome(nome.toString(), pageable);
+        }
+        return this.livroService.findAll(pageable);
     }
 
     @GetMapping("/{id}")
-    public Livro findById(@PathVariable("id") Long id) {
-        return this.livroService.findById(id).get();
+    public ResponseEntity<Livro> findById(@PathVariable("id") Long id) {
+        return new ResponseEntity<Livro>(this.livroService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Livro")),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -39,21 +54,21 @@ public class LivroController {
         return this.livroService.findByCategoria(idCategoria);
     }
 
-    @GetMapping("/byNome/{nome}")
-    public List<Livro> findByNome(@PathVariable("nome") String nome) {
-        return this.livroService.findByNome(nome);
-    }
-
     @GetMapping("/byNomeCategoria/{nome}")
     public List<Livro> findByNomeCategoria(@PathVariable("nome") String nomeCategoria) {
         return this.livroService.findByNomeCategoria(nomeCategoria);
     }
 
     @GetMapping("/comCategorias")
-    public List<Livro> findComCategoria(){
+    public List<Livro> findComCategoria() {
         return this.livroService.findComCategorias();
     }
-}
 
+    @GetMapping("/testException")
+    public void testException() {
+        Integer x = 2 / 0;
+    }
+
+}
 
 

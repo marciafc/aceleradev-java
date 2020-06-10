@@ -4,7 +4,7 @@ import br.com.spring.data.avaliacao.model.Avaliacao;
 import br.com.spring.data.categoria.model.Categoria;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.List;
 
 
@@ -16,7 +16,13 @@ public class Livro {
     private Long id;
 
     @NotNull
+    @NotBlank(message = "O Título não pode ser vazio")
     private String titulo;
+
+    @Min(0)
+    @Max(10)
+    @PositiveOrZero
+    private Long quantidadeEstoque;
 
     @OneToMany
     private List<Avaliacao> avaliacoes;
@@ -27,11 +33,13 @@ public class Livro {
             inverseJoinColumns=@JoinColumn(name="idCategoria"))
     private List<Categoria> categorias;
 
-    public Livro() {
-    }
 
     public Livro(String titulo) {
         this.titulo = titulo;
+    }
+
+    public Livro(){
+        super();
     }
 
     public Long getId() {
@@ -44,6 +52,10 @@ public class Livro {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public List<Avaliacao> getAvaliacoes() {
@@ -60,5 +72,14 @@ public class Livro {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+
+    public Long getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(Long quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 }

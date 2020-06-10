@@ -334,10 +334,10 @@ List<Livro> findByNomeCategoria(@Param("nomeCategoria") String nomeCategoria);
 Exemplo navegando pelo **User**
 
 	findBy
-		  Candidates
-					Id
-					  Acceleration
-								  Name
+		Candidates
+			Id
+				Acceleration
+					Name
 
 Classes:
 

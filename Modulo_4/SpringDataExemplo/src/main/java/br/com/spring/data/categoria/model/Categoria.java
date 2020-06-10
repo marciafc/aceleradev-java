@@ -3,6 +3,7 @@ package br.com.spring.data.categoria.model;
 import br.com.spring.data.livro.model.Livro;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Categoria {
     private Long id;
 
     @NotNull
+    @NotBlank
     private String nome;
 
     @ManyToMany

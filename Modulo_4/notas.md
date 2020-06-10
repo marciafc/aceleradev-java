@@ -5,6 +5,7 @@
  - Hibernate JPA (vídeo)
 
  - Spring Boot (vídeo) 
+   [Documentação Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html)
 
  - [pgAdmin - PostgreSQL Tools for Windows, Mac, Linux and the Web](https://www.pgadmin.org/download) 
    - [Site do Edivaldo Brito - Como instalar o pgAdmin4 no Ubuntu e derivados](https://www.edivaldobrito.com.br/pgadmin4-no-ubuntu/)
