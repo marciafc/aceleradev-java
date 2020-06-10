@@ -326,3 +326,61 @@ List<Livro> findByTituloContaining(String titulo);
 List<Livro> findByNomeCategoria(@Param("nomeCategoria") String nomeCategoria);
 
 ```
+
+## Criar consulta navegando entre os objetos (isso é top!!!!)
+
+É possível criar consulta **navegando nos objetos** apenas **utilizando a convenção dos nomes**, sem a necessidade de query nativa.
+
+Exemplo navegando pelo **User**
+
+	findBy
+		  Candidates
+					Id
+					  Acceleration
+								  Name
+
+Classes:
+
+```java 
+public interface UserRepository extends JpaRepository<User, Long> {
+
+	List<User> findByCandidatesIdAccelerationName(String name);
+}
+
+public class User {
+	@OneToMany(mappedBy = "id.user")
+	private List<Candidate> candidates;
+}
+
+public class Candidate {
+	@EmbeddedId
+	private CandidateId id;
+
+}
+
+public class CandidateId implements Serializable {
+	@ManyToOne
+	private Acceleration acceleration;
+	
+}
+
+public class Acceleration {
+	private String name;
+}
+
+```
+
+Consulta gerada:
+
+```sql
+SELECT user0_.id as id1_5_, user0_.created_at as created_2_5_, user0_.email as email3_5_, user0_.full_name as full_nam4_5_, user0_.nickname as nickname5_5_, user0_.password as password6_5_ 
+  
+FROM users user0_ 
+
+LEFT OUTER JOIN candidate candidates1_ on user0_.id=candidates1_.user_id 
+
+CROSS JOIN acceleration accelerati2_ 
+
+WHERE candidates1_.acceleration_id=accelerati2_.id and accelerati2_.name=?
+
+```
