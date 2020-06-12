@@ -33,7 +33,7 @@
 
 ## Projeto Spring Boot, Spring Data e Spring Web
 
-Projeto [SpringDataExemplo](../Modulo_4/SpringDataExemplo)
+Projeto [SpringDataExemplo](../Modulo_4/SpringDataExemplo) na classe br.com.spring.data.livro.controller.LivroController
 
 Verbos HTTP
 
@@ -362,3 +362,40 @@ public class UserControllerIntegrationTest {
      
 }
 ```
+
+## Inicializar o banco de dados com scripts sql
+
+application.properties
+
+	spring.jpa.hibernate.ddl-auto=none
+	
+pasta "resources":
+	data.sql
+	schema.sql
+	
+	
+Spring Boot can automatically create the schema (DDL scripts) of your DataSource and initialize it (DML scripts). It **loads SQL from the standard root classpath locations: schema.sql and data.sql, respectively**. In addition, Spring Boot processes the **schema-${platform}.sql and data-${platform}.sql files (if present)**, where platform is the value of spring.datasource.platform. This allows you to switch to database-specific scripts if necessary. For example, you might choose to set it to the vendor name of the database (hsqldb, h2, oracle, mysql, postgresql, and so on).	
+(..)
+In a JPA-based app, you can choose to let Hibernate create the schema or use schema.sql, but you cannot do both. Make sure to disable spring.jpa.hibernate.ddl-auto if you use schema.sql.
+
+	spring.jpa.hibernate.ddl-auto=none
+	
+Fonte: [Initialize a Database using basic SQL scripts](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization)	
+
+Referências:
+
+ - [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+
+ - [Quick Guide to MapStruct](https://www.baeldung.com/mapstruct)
+
+ - [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+
+ - [REST with Spring Tutorial](https://www.baeldung.com/rest-with-spring-series)
+ 
+ - [Spring Boot](https://spring.io/projects/spring-boot)
+ 
+ - [https://spring.io/guides/gs/accessing-data-jpa/](https://spring.io/guides/gs/accessing-data-jpa/)
+ 
+ - [Spring Data reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference)
+ 
+ - [https://dzone.com/articles/jpa-tutorial-mapping-entities-0](https://dzone.com/articles/jpa-tutorial-mapping-entities-0)  
