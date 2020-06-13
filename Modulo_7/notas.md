@@ -210,7 +210,9 @@ Ao subir a aplicação, será disponibilizada uma URI neste formato:
 	
 - POST  http://localhost:8080/oauth/token
 	
-- Aba "Authorization": selecionar em "Type" o valor "Basic Auth" e preencher **Username e Password com os dados de autenticaçao da aplicação**	
+- Aba "Authorization": selecionar em "Type" o valor "Basic Auth" e preencher **Username e Password com os dados de autenticaçao da aplicação**	(é o que está configurado em "security.oauth2.client.client-id" e "security.oauth2.client.client-secret", respectivamente).
+   
+- Clicar em "Send"
 	- Na aba "Header" será gerado um hash ("Authorization")
 
 <img src="https://ik.imagekit.io/wmdxyyoe83/spring_security_passo1_fiYT2RJFHn.png">
@@ -218,12 +220,12 @@ Ao subir a aplicação, será disponibilizada uma URI neste formato:
 <img src="https://ik.imagekit.io/wmdxyyoe83/spring_security_passo1_hash_HJlFDwgtt.png">
 	
 - Aba "Body" preencher:	
-  - grant_type: maneira que quer que autentique (vem da configuração: security.oauth2.client.scope)
+  - grant_type: maneira que quer que autentique (é o que está configurado em "security.oauth2.client.scope")
 
-  - username e password: agora é o **usuário e senha do usuário** que deseja se autenticar
-    - Vem da configuração security.oauth2.client.client-id e security.oauth2.client.client-secret, respectivamente
-
+  - username e password: agora é o **usuário e senha do usuário** que deseja se autenticar    
     - Neste projeto de exemplo, o usuário foi inserido no banco de dados ao subir a aplicação via /resources/data.sql.
+  
+- Clicar em "Send"	
 		
 <img src="https://ik.imagekit.io/wmdxyyoe83/spring_security_passo2_R4TfvvaA_K.png">	
 
