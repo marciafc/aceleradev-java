@@ -46,6 +46,20 @@
 
    - [Spring Security Documentação PDF](https://docs.spring.io/spring-security/site/docs/current/reference/pdf/spring-security-reference.pdf)
 
+ - [Spring Boot 2 And OAuth 2 - User Authorization and Token Revocation](https://pattern-match.com/blog/2019/02/12/springboot2-and-oauth2-authorization-and-revocation/)
+ 
+ - Implementing OAuth2 in Spring
+
+   - [Part 1](http://www.zakariaamine.com/2018-01-27/using-oauth2-in-spring)
+
+   - [Part 2](http://www.zakariaamine.com/2018-03-01/using-oauth2-in-spring-scopes)	 
+
+ - [Projeto Spring Security](https://dzone.com/articles/spring-security-with-oauth2)
+   - Neste projeto as classes estão separadas:
+     - Resource Server (@EnableResourceServer)
+	 - Authorization Server (@EnableAuthorizationServer)
+	 - Security Configuration (Autenticação - @EnableWebSecurity)    
+
  - [Documentação Spring - Exemplo login](https://spring.io/guides/gs/securing-web/)
 
  - [Spring Security Form Login](https://www.baeldung.com/spring-security-login)
