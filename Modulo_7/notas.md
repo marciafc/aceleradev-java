@@ -4,6 +4,58 @@
 
  - Swagger (vídeo)
 
+ - [Algaworks - Spring Security e o protocolo OAuth2 na sua API RESTful](https://www.youtube.com/watch?v=UsM2BY20Ux4)
+
+ - [Uma introdução ao OAuth 2](https://www.digitalocean.com/community/tutorials/uma-introducao-ao-oauth-2-pt)
+
+ - [Autenticação com Spring e OAuth2](https://academiadev.gitbook.io/joinville/seguranca/oauth2)
+   - [Github](https://github.com/rartner/autenticacao)
+
+ - [Caelum - Modelando APIs REST com Swagger](https://blog.caelum.com.br/modelando-apis-rest-com-swagger/)
+   - Contract-First ou API-First Development
+   
+   - Contract-Last 
+
+ - [Swagger Documentation](https://swagger.io/docs/)  
+
+ - [SpringFox](https://springfox.github.io/springfox/)
+   - SpringFox é uma ferramenta open source desenvolvida para integrar projetos Spring Boot com a especificação Swagger. 
+   
+     A ferramenta fornece as anotações necessárias para a criação da documentação Swagger e uma interface amigável (SpringFox Swagger-UI) para expor as documentações da API Rest.
+   
+     Após iniciar a aplicação, o endpoint 
+
+   	 http://server:port/v2/api-docs 
+	   
+     estará disponível e trazendo a documentação em forma de JSON.
+
+     Para melhor visualização, pode ser utilizada a interface amigável fornecida pela biblioteca para visualizar a documentação. 
+   
+     A documentação estará disponível na url **http://server:port/swagger-ui.html** 
+   
+     Fonte: [Documentação de APIs utilizando SpringFox
+](https://tjf.totvs.com.br/docs/swagger-springfox)
+
+ - [Algaworks - O que é Spring Security?](https://blog.algaworks.com/spring-security/)
+   - autenticação via memória, JDBC e JPA (com o UserDetailsService)
+   - 3 tipos de login: HTTP Basic, formulário HTML do próprio Spring Security e formulário personalizado
+   - incluir permissões para diferentes URLs 
+   - [Github](https://github.com/algaworks/artigo-spring-security)
+
+ - [Spring Security Documentação HTML](https://docs.spring.io/spring-security/site/docs/current/reference/html5/)
+
+   - [Spring Security Documentação PDF](https://docs.spring.io/spring-security/site/docs/current/reference/pdf/spring-security-reference.pdf)
+
+ - [Documentação Spring - Exemplo login](https://spring.io/guides/gs/securing-web/)
+
+ - [Spring Security Form Login](https://www.baeldung.com/spring-security-login)
+
+ - [Java EE (Jakarta EE) com Spring Security](https://www.baeldung.com/java-ee-spring-security)
+
+ - Desafio:
+   - Oauth2 com spring
+
+ - Feedback semanal  
 
 ## Spring Security com OAuth2
 
@@ -106,7 +158,7 @@ public class Usuario implements UserDetails {
 }
 ```
 
-# Configurando escopo, usuário e senha da aplicação de autenticação
+## Configurando escopo, usuário e senha da aplicação de autenticação
 
 application.properties
 
@@ -130,7 +182,26 @@ e irá exibir no console.
 	// Será exibido no console algo assim:
 	security.oauth2.client.client-id = 5c3ccc81-d5c3-4d9e-8488-6d9ea52cff39
 	security.oauth2.client.client-secret = 862c0b27-4dc0-4a72-b8b7-6eb29ce3555e
-	
+
+## Usuário em memória
+
+Caso nao configure o usuário no banco de dados ou em memória (através do método configure), o Spring irá gerar uma senha para o usuário. Neste caso, usuário é "user" (conforme documentação do Spring) e a senha será gerada pelo Spring e exibida no console.
+
+	// Será exibido no console algo assim:
+	Using generated security password: f774a805-43f6-42e9-b51b-9c760d05b3c1
+
+Configurando o usuário em memória na classe SegurancaConfiguration:
+
+```java
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("alexandre").password("123").roles("ADMIN");
+	}	
+```	
+Fonte: [Spring Security e o protocolo OAuth2 na sua API RESTful](https://www.youtube.com/watch?v=UsM2BY20Ux4)
+
+## Testando a aplicação agora com Spring Security
+
 Ao subir a aplicação, será disponibilizada uma URI neste formato:
 
 	POST http://<ip>:<porta>/oauth/token 
@@ -150,7 +221,9 @@ Ao subir a aplicação, será disponibilizada uma URI neste formato:
   - grant_type: maneira que quer que autentique (vem da configuração: security.oauth2.client.scope)
 
   - username e password: agora é o **usuário e senha do usuário** que deseja se autenticar
-    - Neste projeto de exemplo, o usuário foi inserido no banco de dados ao subir a aplicação via /resources/data.sql
+    - Vem da configuração security.oauth2.client.client-id e security.oauth2.client.client-secret, respectivamente
+
+    - Neste projeto de exemplo, o usuário foi inserido no banco de dados ao subir a aplicação via /resources/data.sql.
 		
 <img src="https://ik.imagekit.io/wmdxyyoe83/spring_security_passo2_R4TfvvaA_K.png">	
 
@@ -169,6 +242,133 @@ Fazendo requisição SEM o token:
 	
 ## Swagger com SpringFox
 
+- Criar Swagger primeiro e então gerar os endpoints
+  - [Exemplo Swagger Petstore](https://editor.swagger.io/)
+  - [Swagger: Como gerar uma documentação interativa para API REST](http://www.matera.com/blog/post/swagger-como-gerar-uma-documentacao-interativa-para-api-rest)
+  - [Primeiros passos com Swagger - Introdução](https://www.alura.com.br/conteudo/swagger-crie-uma-documentacao-rest)
+  - [Swagger Editor](https://swagger.io/tools/swagger-editor/)
+
+- Criar endpoints e então documentar com o Swagger
+
+pom.xml
+```xml
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>2.9.2</version>
+</dependency>
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.9.2</version>
+</dependency>
+```
+Ativar e configurar o Swagger
+```java
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+	// ...
+}
+```
+
+URI de acesso: 
+
+	http://localhost:8080/swagger-ui.html
 
 
+O Swagger fornece a chamada vir Curl
 
+	curl -X GET "http://localhost:8080/livro?pageNumber=1&pageSize=1" -H "accept: */*" -H "Content-Type: application/json" -d "\"string\""
+
+Ou via Request URL
+
+	http://localhost:8080/livro?pageNumber=1&pageSize=1
+
+Melhorando a documentação dos métodos do Controller
+
+  - @ApiOperation
+
+  - @ApiResponse
+  
+  - @ApiResponses
+
+  - @ApiModelProperty
+
+```java
+@RestController
+@RequestMapping("/livro")
+public class LivroController {
+
+	@Autowired
+	private LivroService livroService;
+
+	@PostMapping
+	@ApiOperation("Cria um novo livro")
+	@ApiResponses(value = {
+		@ApiResponse(code = 201, message = "Livro criado com sucesso")})
+	public ResponseEntity<Livro> create(@Valid @RequestBody Livro livro) {
+
+		return new ResponseEntity<Livro>(this.livroService.save(livro), HttpStatus.CREATED);
+
+	}
+
+	@GetMapping
+	@ApiOperation("Lista todos os livros")
+	public Iterable<Livro> findAll(@PathParam("nome") String nome, Pageable pageable) {
+		
+		if (nome != null) {
+			return this.livroService.findByNome(nome.toString(), pageable);
+		}
+
+		return this.livroService.findAll(pageable);
+	}
+
+	@DeleteMapping("/{id}")
+	@ApiResponse(code = 200, message = "Livro excluído")
+	public void delete(@PathVariable("id") Long id) {
+
+		this.livroService.deleteById(id);
+
+	}
+
+	@GetMapping("/{id}")
+	@ApiResponses(value = {
+		@ApiResponse(code = 404, message = "Livro não localizado"), 
+		@ApiResponse(code = 200, message = "Livro localizado")})
+	public ResponseEntity<Livro> findById(@PathVariable("id") Long id) {
+
+		return new ResponseEntity<Livro>(this.livroService.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Livro")),HttpStatus.OK);
+
+    }
+
+
+@Entity
+public class Livro {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+
+	@NotNull
+	@NotBlank(message = "O Título não pode ser vazio")
+	@ApiModelProperty(notes = "Título do livro", required = true)
+	private String titulo;
+
+	//...
+	}		
+```
+
+## Atualizando token
+
+Quando quisermos apenas atualizar o token do usuário já conectado, podemos enviar uma requisição para a mesma url, porém da forma
+
+	http://localhost:8080/oauth/token?grant_type=refresh_token&refresh_token={REFRESH_TOKEN}, 
+
+sendo REFRESH_TOKEN o mesmo que foi retornado no momento da autenticação do usuário.		
+
+Fonte:
+
+ - [Autenticação com Spring e OAuth2](https://academiadev.gitbook.io/joinville/seguranca/oauth2)
+   - [Github](https://github.com/rartner/autenticacao)

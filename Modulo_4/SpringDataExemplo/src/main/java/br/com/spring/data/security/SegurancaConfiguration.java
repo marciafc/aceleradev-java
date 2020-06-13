@@ -40,6 +40,7 @@ public class SegurancaConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // Ou pode ser em memória: auth.inMemoryAuthentication().withUser("alexandre").password("123").roles("ADMIN");
         auth.userDetailsService(this.userService).passwordEncoder(passwordEncoder());
     }
 

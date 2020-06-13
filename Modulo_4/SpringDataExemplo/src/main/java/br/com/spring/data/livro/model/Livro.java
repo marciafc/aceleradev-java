@@ -2,6 +2,7 @@ package br.com.spring.data.livro.model;
 
 import br.com.spring.data.avaliacao.model.Avaliacao;
 import br.com.spring.data.categoria.model.Categoria;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,6 +18,7 @@ public class Livro {
 
     @NotNull
     @NotBlank(message = "O Título não pode ser vazio")
+    @ApiModelProperty(notes = "Título do livro", required = true)
     private String titulo;
 
     @Min(0)
