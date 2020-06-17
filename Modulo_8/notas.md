@@ -102,6 +102,7 @@ public void darDescontoDe5PorCentoAbaixoDe500Reais() {
  
  - Desafios:
    - Refatorando Formas de Pagamento
+     - [Outro exemplo de implementação com Strategy](https://pt.wikipedia.org/wiki/Strategy)
    
  - Feedback semanal
  
