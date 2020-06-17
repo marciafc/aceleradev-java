@@ -16,7 +16,7 @@ public class Avaliacao {
     @Min(1)
     @Max(5)
     @NotNull
-    private Byte nota;
+    private Integer nota;
 
     @NotBlank
     @NotNull
@@ -30,11 +30,11 @@ public class Avaliacao {
         this.avaliacaoIdentity = avaliacaoIdentity;
     }
 
-    public Byte getNota() {
+    public Integer getNota() {
         return nota;
     }
 
-    public void setNota(Byte nota) {
+    public void setNota(Integer nota) {
         this.nota = nota;
     }
 }

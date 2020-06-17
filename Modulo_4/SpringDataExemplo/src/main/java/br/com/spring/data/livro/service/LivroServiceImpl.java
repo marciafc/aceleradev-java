@@ -10,8 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LivroServiceImpl implements LivroService {
@@ -65,6 +67,12 @@ public class LivroServiceImpl implements LivroService {
     @Override
     public List<Livro> findComCategorias() {
         return this.livroRepository.findComCategoria();
+    }
+
+    @Override
+    public Livro findByMaiorMediaAvaliacao() {
+        return this.livroRepository.findComAvaliacao().stream().
+                collect(Collectors.maxBy(Comparator.comparingInt(Livro::getMediaAvaliacoes))).get();
     }
 
     private void preencherCategorias(Livro livro) {

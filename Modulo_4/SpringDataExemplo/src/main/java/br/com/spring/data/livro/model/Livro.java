@@ -6,7 +6,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -84,4 +86,11 @@ public class Livro {
     public void setQuantidadeEstoque(Long quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
     }
+
+
+    public Integer getMediaAvaliacoes() {
+        return this.avaliacoes.stream()
+                .collect(Collectors.maxBy(Comparator.comparingInt(Avaliacao::getNota))).get().getNota();
+    }
+
 }

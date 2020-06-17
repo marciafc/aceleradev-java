@@ -23,4 +23,6 @@ public interface LivroService {
     List<Livro> findByNomeCategoria(String nomeCategoria);
 
     List<Livro> findComCategorias();
+
+    Livro findByMaiorMediaAvaliacao();
 }

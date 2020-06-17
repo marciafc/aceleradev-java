@@ -31,4 +31,7 @@ public interface LivroRepository extends CrudRepository<Livro, Long> {
             "ON c.id = cl.id_categoria " +
             "where c.nome like %:nomeCategoria%", nativeQuery = true)
     List<Livro> findByNomeCategoria(@Param("nomeCategoria") String nomeCategoria);
+
+    @Query("from Livro livro where livro.avaliacoes is not empty")
+    List<Livro> findComAvaliacao();
 }
