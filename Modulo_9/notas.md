@@ -177,7 +177,9 @@ DevOps
 CI/CD: Método para entrega frequente de aplicações para os clientes utilizando automação em diversas etapas do ciclo de desenvolvimento.
 
 <img src="https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png">
+
 Fonte: [Integração e entrega contínuas: pipeline CI/CD](https://www.redhat.com/pt-br/topics/devops/what-is-ci-cd)
+
 
 CI: Continuous Integration (Integração Contínua)
  - Continuous Integration: permite a integração automatizada de código desenvolvido por pessoas e/ou times diferentes em um mesmo repositório
