@@ -68,7 +68,7 @@
  
  - [OAuth 2.0 - Guia do Iniciante](https://www.brunobrito.net.br/oauth2)
  
- - [OAuth 2 // Dicionário do Programador - Youtube](https://www.youtube.com/watch?v=z-RuvnMlw34)
+   - [OAuth 2 // Dicionário do Programador - Youtube](https://www.youtube.com/watch?v=z-RuvnMlw34)
 
  - Desafio:
    - Oauth2 com spring
