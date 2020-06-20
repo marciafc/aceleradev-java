@@ -210,80 +210,79 @@ Algumas ferramentas:
 
 ## Quiz Deploy aplicações Java
 
-(em negrito a resposta correta)
+QUESTÃO 1 DE 10: Qual das alternativas a seguir é verdadeira sobre GOALS na terminologia do Maven?
 
-- QUESTÃO 1 DE 10: Qual das alternativas a seguir é verdadeira sobre GOALS na terminologia do Maven?
+( ) Uma GOAL representa uma tarefa específica que contribui para o build e o gerenciamento de um projeto
 
-Uma GOAL representa uma tarefa específica que contribui para o build e o gerenciamento de um projeto
-
-Pode estar vinculado a zero ou mais fases de construção.
-
-Uma GOAL não vinculada a nenhuma fase de construção pode ser executada fora do ciclo de vida do build por invocação direta
+( ) Pode estar vinculado a zero ou mais fases de construção.
 
-**Todos os itens acima**
+( ) Uma GOAL não vinculada a nenhuma fase de construção pode ser executada fora do ciclo de vida do build por invocação direta
 
-- QUESTÃO 2 DE 10: Qual dos seguintes escopos indica que a dependência está disponível apenas para as fases de compilação e execução de teste?
+(X) Todos os itens acima
 
-compile
+QUESTÃO 2 DE 10: Qual dos seguintes escopos indica que a dependência está disponível apenas para as fases de compilação e execução de teste?
 
-provided
-
-runtime
+( ) compile
 
-**test**
+( ) provided
 
-- QUESTÃO 3 DE 10: Quais das afirmativas abaixo sobre o Maven são verdadeiras?
+( ) runtime
 
-Ele fornece um modelo abrangente para projetos que são reutilizáveis, manuteníveis e mais fáceis de compreender
-
-Maven fornece plugins ou ferramentas que interagem com seu modelo declarativo
-
-**Ambos os itens acima**
-
-Nenhuma das opções acima
+(X) test
 
-- QUESTÃO 4 DE 10: Sobre o Gerenciamento de Dependencias, quais afirmativas abaixo são Verdadeiras?
+QUESTÃO 3 DE 10: Quais das afirmativas abaixo sobre o Maven são verdadeiras?
 
-**O Maven faz o download de suas dependencias de repositorios Maven remotos**
-
-O Maven utiliza um repositorio local por projeto quando há varios projetos na mesma maquina
+( ) Ele fornece um modelo abrangente para projetos que são reutilizáveis, manuteníveis e mais fáceis de compreender
 
-O Maven sempre baixa todas as dependencias de um projeto novo
+( ) Maven fornece plugins ou ferramentas que interagem com seu modelo declarativo
 
-**O Maven pode manter varias versões da mesma dependencia no repositorio local**
+(X) Ambos os itens acima
 
-- QUESTÃO 5 DE 10: Sobre a GOAL package, qual das afirmativas abaixo está INCORRETA?
+( ) Nenhuma das opções acima
 
-Executa a compilação do projeto
+QUESTÃO 4 DE 10: Sobre o Gerenciamento de Dependencias, quais afirmativas abaixo são Verdadeiras?
 
-Executa os testes do projeto
-
-**Gera o artefato e disponibiliza no repositório local**
-
-Faz parte do Core Plugin do Maven
+(X) O Maven faz o download de suas dependencias de repositorios Maven remotos
 
-- QUESTÃO 6 DE 10: Sobre o Ciclo de Vida Padrão de Build no Maven, qual dessas alternativas não faz parte dele?
+( ) O Maven utiliza um repositorio local por projeto quando há varios projetos na mesma maquina
 
-**execute**
-
-verify
-
-package
-
-validate
+( ) O Maven sempre baixa todas as dependencias de um projeto novo
 
-- QUESTÃO 7 DE 10: Qual das alternativas abaixo é uma goal que NÃO faz parte do Core Plugin do Maven?
+(X) O Maven pode manter varias versões da mesma dependencia no repositorio local
 
-clean
+QUESTÃO 5 DE 10: Sobre a GOAL package, qual das afirmativas abaixo está INCORRETA?
 
-install
+( ) Executa a compilação do projeto
 
-package
+( ) Executa os testes do projeto
 
-**sql:execute**
+(X) Gera o artefato e disponibiliza no repositório local
 
-- QUESTÃO 8 DE 10: Qual tag do maven permite que o projeto possa "herdar" configurações, incluindo dependências de outro projeto?
+( ) Faz parte do Core Plugin do Maven
 
+QUESTÃO 6 DE 10: Sobre o Ciclo de Vida Padrão de Build no Maven, qual dessas alternativas não faz parte dele?
+
+(X) execute
+
+( ) verify
+
+( ) package
+
+( ) validate
+
+QUESTÃO 7 DE 10: Qual das alternativas abaixo é uma goal que NÃO faz parte do Core Plugin do Maven
+
+( ) clean
+
+( ) install
+
+( ) package
+
+(X) sql:execute
+
+QUESTÃO 8 DE 10: Qual tag do maven permite que o projeto possa "herdar" configurações, incluindo dependências de outro projeto?
+
+```
 	<dependency>
 
 	<parent>
@@ -291,25 +290,26 @@ package
 	<property>
 	
 	<repository>
+```	
 		
 Resposta correta: parent
 
-- QUESTÃO 9 DE 10: Sobre o deploy de aplicações Spring Boot, qual alternativa abaixo é VERDADEIRA?
+QUESTÃO 9 DE 10: Sobre o deploy de aplicações Spring Boot, qual alternativa abaixo é VERDADEIRA?
 
-Para aplicações WEB, por padrão o Spring Boot gera um artefato WAR que pode ser implantado em um Servidor Tomcat ou similares
+( ) Para aplicações WEB, por padrão o Spring Boot gera um artefato WAR que pode ser implantado em um Servidor Tomcat ou similare
 
-Para aplicações WEB, por padrão o Spring Boot gera um artefato JAR que pode ser implantado em um Servidor Tomcat ou similares
+( ) Para aplicações WEB, por padrão o Spring Boot gera um artefato JAR que pode ser implantado em um Servidor Tomcat ou similares
 
-**Para aplicações WEB, por padrão o Spring Boot gera um artefato JAR com um Tomcat embarcado que pode ser implantado diretamente em produção**
+(X) Para aplicações WEB, por padrão o Spring Boot gera um artefato JAR com um Tomcat embarcado que pode ser implantado diretamente em produção
 
-Nenhuma das alternativas acima
+( ) Nenhuma das alternativas acima
 
-- QUESTÃO 10 DE 10: Qual alternativa abaixo não faz parte dos objetivos de Continuous Integration?
+QUESTÃO 10 DE 10: Qual alternativa abaixo não faz parte dos objetivos de Continuous Integration?
 
-Automatização de processo do processo de integraçao entre diferentes branchs
-
-Automatização da execução de testes unitários
-
-**Automatização do deploy no ambiente de produção**
-
-Automatização da execução de testes de integração
+( ) Automatização de processo do processo de integraçao entre diferentes branchs
+
+( ) Automatização da execução de testes unitários
+
+(X) Automatização do deploy no ambiente de produção
+
+( ) Automatização da execução de testes de integração
