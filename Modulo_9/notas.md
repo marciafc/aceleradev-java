@@ -210,7 +210,7 @@ Algumas ferramentas:
 
 ## Quiz Deploy aplicações Java
 
-QUESTÃO 1 DE 10: Qual das alternativas a seguir é verdadeira sobre GOALS na terminologia do Maven?
+**QUESTÃO 1 DE 10**: Qual das alternativas a seguir é verdadeira sobre GOALS na terminologia do Maven?
 
 ( ) Uma GOAL representa uma tarefa específica que contribui para o build e o gerenciamento de um projeto
 
@@ -220,7 +220,7 @@ QUESTÃO 1 DE 10: Qual das alternativas a seguir é verdadeira sobre GOALS na te
 
 (X) Todos os itens acima
 
-QUESTÃO 2 DE 10: Qual dos seguintes escopos indica que a dependência está disponível apenas para as fases de compilação e execução de teste?
+**QUESTÃO 2 DE 10**: Qual dos seguintes escopos indica que a dependência está disponível apenas para as fases de compilação e execução de teste?
 
 ( ) compile
 
@@ -230,7 +230,7 @@ QUESTÃO 2 DE 10: Qual dos seguintes escopos indica que a dependência está dis
 
 (X) test
 
-QUESTÃO 3 DE 10: Quais das afirmativas abaixo sobre o Maven são verdadeiras?
+**QUESTÃO 3 DE 10**: Quais das afirmativas abaixo sobre o Maven são verdadeiras?
 
 ( ) Ele fornece um modelo abrangente para projetos que são reutilizáveis, manuteníveis e mais fáceis de compreender
 
@@ -240,7 +240,7 @@ QUESTÃO 3 DE 10: Quais das afirmativas abaixo sobre o Maven são verdadeiras?
 
 ( ) Nenhuma das opções acima
 
-QUESTÃO 4 DE 10: Sobre o Gerenciamento de Dependencias, quais afirmativas abaixo são Verdadeiras?
+**QUESTÃO 4 DE 10**: Sobre o Gerenciamento de Dependencias, quais afirmativas abaixo são Verdadeiras?
 
 (X) O Maven faz o download de suas dependencias de repositorios Maven remotos
 
@@ -250,7 +250,7 @@ QUESTÃO 4 DE 10: Sobre o Gerenciamento de Dependencias, quais afirmativas abaix
 
 (X) O Maven pode manter varias versões da mesma dependencia no repositorio local
 
-QUESTÃO 5 DE 10: Sobre a GOAL package, qual das afirmativas abaixo está INCORRETA?
+**QUESTÃO 5 DE 10**: Sobre a GOAL package, qual das afirmativas abaixo está INCORRETA?
 
 ( ) Executa a compilação do projeto
 
@@ -260,7 +260,7 @@ QUESTÃO 5 DE 10: Sobre a GOAL package, qual das afirmativas abaixo está INCORR
 
 ( ) Faz parte do Core Plugin do Maven
 
-QUESTÃO 6 DE 10: Sobre o Ciclo de Vida Padrão de Build no Maven, qual dessas alternativas não faz parte dele?
+**QUESTÃO 6 DE 10**: Sobre o Ciclo de Vida Padrão de Build no Maven, qual dessas alternativas não faz parte dele?
 
 (X) execute
 
@@ -270,7 +270,7 @@ QUESTÃO 6 DE 10: Sobre o Ciclo de Vida Padrão de Build no Maven, qual dessas a
 
 ( ) validate
 
-QUESTÃO 7 DE 10: Qual das alternativas abaixo é uma goal que NÃO faz parte do Core Plugin do Maven
+**QUESTÃO 7 DE 10**: Qual das alternativas abaixo é uma goal que NÃO faz parte do Core Plugin do Maven
 
 ( ) clean
 
@@ -280,21 +280,21 @@ QUESTÃO 7 DE 10: Qual das alternativas abaixo é uma goal que NÃO faz parte do
 
 (X) sql:execute
 
-QUESTÃO 8 DE 10: Qual tag do maven permite que o projeto possa "herdar" configurações, incluindo dependências de outro projeto?
+**QUESTÃO 8 DE 10**: Qual tag do maven permite que o projeto possa "herdar" configurações, incluindo dependências de outro projeto?
 
-```
+```xml
 	<dependency>
-
+	
 	<parent>
-	
+	
 	<property>
-	
+	
 	<repository>
-```	
+```
 		
 Resposta correta: parent
 
-QUESTÃO 9 DE 10: Sobre o deploy de aplicações Spring Boot, qual alternativa abaixo é VERDADEIRA?
+**QUESTÃO 9 DE 10**: Sobre o deploy de aplicações Spring Boot, qual alternativa abaixo é VERDADEIRA?
 
 ( ) Para aplicações WEB, por padrão o Spring Boot gera um artefato WAR que pode ser implantado em um Servidor Tomcat ou similare
 
@@ -304,7 +304,7 @@ QUESTÃO 9 DE 10: Sobre o deploy de aplicações Spring Boot, qual alternativa a
 
 ( ) Nenhuma das alternativas acima
 
-QUESTÃO 10 DE 10: Qual alternativa abaixo não faz parte dos objetivos de Continuous Integration?
+**QUESTÃO 10 DE 10**: Qual alternativa abaixo não faz parte dos objetivos de Continuous Integration?
 
 ( ) Automatização de processo do processo de integraçao entre diferentes branchs
 
