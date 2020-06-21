@@ -18,11 +18,11 @@
 
  - Herança e Polimorfismo
 
- - Desafios
+ - Desafios | [Aula Youtube](https://www.youtube.com/watch?v=JD8ma9ZLUhs&feature=youtu.be)
    - Gerenciador de Times de Futebol
    - Controle de estacionamento
      - [Construindo objetos de forma inteligente: Builder Pattern e Fluent Interfaces](http://luizricardo.org/2013/08/construindo-objetos-de-forma-inteligente-builder-pattern-e-fluent-interfaces) 
-   - Media, Moda e Mediana
+   - Media, Moda e Mediana     
 
   - Feedback semanal
  

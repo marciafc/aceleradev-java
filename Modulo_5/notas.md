@@ -99,7 +99,7 @@
 			```
 	 - Passing Method Parameters to Query Methods
  
- - Desafios
+ - Desafios | [Aula Youtube](https://www.youtube.com/watch?v=-eC70u1hVjc&feature=youtu.be)
    - Criando e manipulando entidades no Banco de dados com Spring
    - Order Service
 
