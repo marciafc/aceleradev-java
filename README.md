@@ -12,7 +12,7 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
 
   - [Git](/Introducao/git.md)
 
-[Módulo 1](/Modulo_1)
+[Módulo 1](/Modulo_1/notas.md)
 
   - Lógica de Programação
  
@@ -23,11 +23,11 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Manipulação de Strings
   
   - Desafios
-    - FIBONACCI
-	- CRIPTOGRAFIA DE JÚLIO CÉSAR
-	- CALCULADORA DE SALÁRIO LÍQUIDO
+    - [FIBONACCI](/Modulo_1/desafios/Fibonacci)
+	- [CRIPTOGRAFIA DE JÚLIO CÉSAR](/Modulo_1/desafios/Criptografia_de_Julio_Cesar)
+	- [CALCULADORA DE SALÁRIO LÍQUIDO](/Modulo_1/desafios/Calculadora_de_Salario_Liquido)
 	
-[Módulo 2](/Modulo_2)
+[Módulo 2](/Modulo_2/notas.md)
 
   - Orientação a Objetos
   
@@ -46,11 +46,11 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Estrutura de Dados
   
   - Desafios
-    - GERENCIADOR DE TIMES DE FUTEBOL
-	- CONTROLE DE ESTACIONAMENTO
-	- MEDIA, MODA E MEDIANA
+    - [GERENCIADOR DE TIMES DE FUTEBOL](/Modulo_2/desafios/Gerenciador_de_Times_de_Futebol)
+	- [CONTROLE DE ESTACIONAMENTO](/Modulo_2/desafios/Controle_de_estacionamento)
+	- [MEDIA, MODA E MEDIANA](/Modulo_2/desafios/Media_Moda_e_Mediana)
 	
-[Módulo 3](/Modulo_3)
+[Módulo 3](/Modulo_3/notas.md)
 
   - Orientação a Objetos
   
@@ -59,9 +59,9 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Annotations
   
   - Desafio
-    - UTILITÁRIO - CALCULADOR DE ATRIBUTOS DE CLASSE
+    - [UTILITÁRIO - CALCULADOR DE ATRIBUTOS DE CLASSE](/Modulo_3/desafios/Calculador_de_Atributos_de_Classe)
 	
-[Módulo 4](/Modulo_4)
+[Módulo 4](/Modulo_4/notas.md)
 
   - Orientação a Objetos
   
@@ -72,9 +72,9 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Lombok
   
   - Desafio
-    - CRIANDO ENTIDADES DE BANCO DE DADOS EM JAVA
+    - [CRIANDO ENTIDADES DE BANCO DE DADOS EM JAVA](/Modulo_4/desafios/Criando_Entidades_de_Banco_de_Dados_em_Java)
 	
-[Módulo 5](/Modulo_5)
+[Módulo 5](/Modulo_5/notas.md)
 
   - Orientação a Objetos
   
@@ -93,10 +93,10 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Collections API
   
   - Desafios
-    - CRIANDO E MANIPULANDO ENTIDADES NO BANCO DE DADOS COM SPRING
-	- ORDER SERVICE
+    - [CRIANDO E MANIPULANDO ENTIDADES NO BANCO DE DADOS COM SPRING](/Modulo_5/desafios/Criando_e_manipulando_entidades_no_Banco_de_dados_com_Spring)
+	- [ORDER SERVICE](/Modulo_5/desafios/Order_Service)
 	
-[Módulo 6](/Modulo_6)
+[Módulo 6](/Modulo_6/notas.md)
 
   - Rest API
   
@@ -115,10 +115,10 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - SQL
   
   - Desafios
-    - CRIANDO ENDPOINTS COM SPRING
-	- GERADOR DE FRASES DO MONTY PYTHON UTILIZANDO SPRING BOOT E JPA
+    - [CRIANDO ENDPOINTS COM SPRING](/Modulo_6/desafios/Criando_endpoints_com_Spring)
+	- [GERADOR DE FRASES DO MONTY PYTHON UTILIZANDO SPRING BOOT E JPA](/Modulo_6/desafios/Gerador_de_frases_do_Monty_Python_utilizando_Spring_Boot_e_JPA)
 	
-[Módulo 7](/Modulo_7)	
+[Módulo 7](/Modulo_7/notas.md)	
 
   - Rest API
   
@@ -137,9 +137,9 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - SQL
   
   - Desafio
-    - OAUTH2 COM SPRING
+    - [OAUTH2 COM SPRING](/Modulo_7/desafios/Oauth2_com_Spring)
   
-[Módulo 8](/Modulo_8)	   
+[Módulo 8](/Modulo_8/notas.md)	   
 
   - Clean code
 
@@ -152,9 +152,9 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   - Enumerations
   
   - Desafio
-    - REFATORANDO FORMAS DE PAGAMENTO
+    - [REFATORANDO FORMAS DE PAGAMENTO](/Modulo_8/desafios/Refatorando_Formas_de_Pagamento)
 	
-[Módulo 9](/Modulo_9)	
+[Módulo 9](/Modulo_9/notas.md)	
 
   - Maven
   
@@ -162,6 +162,6 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   
   - Quiz Deploy aplicações Java
   
-[Módulo 10](/Modulo_10)	  
+[Módulo 10](/Modulo_10/notas.md)	  
 
   - Projeto prático (criar projeto no Github)

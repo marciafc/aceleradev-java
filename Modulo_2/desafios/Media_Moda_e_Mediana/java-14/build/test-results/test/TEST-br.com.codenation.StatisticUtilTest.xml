@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.codenation.StatisticUtilTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-06-21T15:59:08" hostname="marcialinux-Lenovo-G400s" time="0.351">
+  <properties/>
+  <testcase name="testRepetedModeEmptyArray" classname="br.com.codenation.StatisticUtilTest" time="0.003"/>
+  <testcase name="testMedianWithOddElementsSize" classname="br.com.codenation.StatisticUtilTest" time="0.252"/>
+  <testcase name="testModeOnlyOneElement" classname="br.com.codenation.StatisticUtilTest" time="0.021"/>
+  <testcase name="testMode" classname="br.com.codenation.StatisticUtilTest" time="0.001"/>
+  <testcase name="testAverage" classname="br.com.codenation.StatisticUtilTest" time="0.07"/>
+  <testcase name="testAverageWithEmptyArray" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <testcase name="testMode1Repete2E4Repete2E8Repete2" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <testcase name="testMode3Repete3E4Repete3" classname="br.com.codenation.StatisticUtilTest" time="0.001"/>
+  <testcase name="testMedianWithEmptyArray" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <testcase name="testModeEmptyArray" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <testcase name="testMode3Repete3" classname="br.com.codenation.StatisticUtilTest" time="0.001"/>
+  <testcase name="testMedianWithEvenElementsSize" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <testcase name="testMedian" classname="br.com.codenation.StatisticUtilTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
