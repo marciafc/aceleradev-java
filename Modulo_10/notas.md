@@ -1,7 +1,6 @@
 # Tópicos
 
- - Projeto prático
-   - Central de Erros (criar projeto no Github)
+ - Projeto Central de Erros
  
  - Autoavaliação & Squad awards
 
