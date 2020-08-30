@@ -164,4 +164,4 @@ Obs.: Os links direcionam para as notas de aula de cada módulo. Alguns trechos 
   
 [Módulo 10](/Modulo_10/notas.md)	  
 
-  - Projeto prático (criar projeto no Github)
+  - [Projeto Central de Erros](https://github.com/marciafc/error-center-api)
